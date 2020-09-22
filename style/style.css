@@ -35,6 +35,23 @@
     font-size: 12px;
     border-bottom: 12px; }
 
+body, html {
+  font-family: 'Montserrat', sans-serif; }
+
+#home-title {
+  font-size: 26px;
+  color: #fff; }
+
+#home-page {
+  background-color: #720B0B; }
+
+.my-title {
+  color: #fff;
+  font-size: 16px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  margin-bottom: 0px; }
+
 .nav-col {
   background-color: #720B0B !important; }
 
@@ -56,3 +73,31 @@ hr {
     margin: 0 auto;
     border-radius: 5px;
     border: 0px solid black; }
+
+.filter-buttons {
+  padding-left: 0px;
+  margin: 0 auto; }
+
+.filter-buttons li {
+  display: inline; }
+
+.filter-buttons li button {
+  border-radius: 5px;
+  margin: 3px 1px;
+  border: #fff 2px solid;
+  padding: 5px 10px;
+  background-color: #720B0B;
+  box-shadow: none;
+  color: #fff;
+  opacity: 85%;
+  font-size: 20px; }
+
+.filter-buttons li button.active {
+  background-color: #fff;
+  color: #720B0B;
+  opacity: 90%; }
+
+.filter-buttons li button:hover {
+  background-color: #fff;
+  color: #720B0B;
+  opacity: 90%; }
