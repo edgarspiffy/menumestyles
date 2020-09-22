@@ -35,8 +35,54 @@
     font-size: 12px;
     border-bottom: 12px; }
 
+.position-relative {
+  position: relative;
+  height: 60px; }
+
+.search-bar {
+  height: 48px;
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  border-radius: 5px;
+  border: 0px solid black;
+  position: absolute; }
+
+.search-bar[type=text] {
+  font-size: 26px;
+  padding: 5px 20px 5px 44px;
+  font-weight: 500; }
+
+.search-bar-container {
+  padding-top: 25px;
+  z-index: 5; }
+
+.search-bar-icon {
+  position: absolute;
+  z-index: 15;
+  top: 7px;
+  left: 7px;
+  color: #720B0B;
+  opacity: 85%; }
+
 body, html {
   font-family: 'Montserrat', sans-serif; }
+
+.spacer {
+  height: 80px; }
+
+.spacer-2 {
+  padding-top: 117px; }
+
+.primary-heading {
+  font-size: 24px;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center; }
+
+.primary-heading-container {
+  position: relative;
+  top: 80px; }
 
 #home-title {
   font-size: 26px;
