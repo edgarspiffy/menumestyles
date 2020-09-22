@@ -1,16 +1,19 @@
 {
   "name": "mvp-styles-only",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "sass": "node-sass -w scss/ -o style/ --recursive"
+    "start": "node ./bin/www",
+    "sass": "node-sass -w scss/ -o public/stylesheets --recursive"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
     "node-sass": "^4.14.1",
-    "sass": "^1.26.10"
+    "partials": "^0.1.0"
   }
 }
