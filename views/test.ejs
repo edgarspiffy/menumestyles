@@ -12,16 +12,16 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-lg-9" id='card-holder'>
-      <% data.forEach((element, index) => { %>
-        <% include ./partials/foodCard %>
+    <div class="col-lg-9">
+      <% data.forEach(element => { %>
+      <% include ./partials/foodCard %>
       <% }) %>
     </div>
     <div class="col-lg-3">
       <% include ./partials/filtersDesktop %>
     </div>
   </div>
-</div> 
+</div>
 
 
 

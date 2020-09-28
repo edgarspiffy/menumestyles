@@ -2,13 +2,19 @@
   <div class='card-tab'>Happy Hour</div>
   <div class="card-body">
     <h4 class="card-subtitle">McDonalds</h4>
-    <h2 class="card-title">Double Cheesy Big Mac</h2>
+    <h2 class="card-title"><%= element.name %></h2>
     <hr>
-    <h4 class="card-subtitle">Card subtitle</h4>
-    <p class="card-text">regular bun, 100% beef patty, American cheese, ketchup, pickle slices, onions
+    <h4 class="card-subtitle">Ingredients</h4>
+    <p class="card-text"><%= element.ingredients %>
     </p>
-    <h4 class="card-subtitle">Card subtitle</h4>
-    <p class="card-text">vegan, low-cost
+    <h4 class="card-subtitle">Attributes</h4>
+    <p class="card-text dish-attributes">
+      <% if (element.attributes.vegan == true) { %>
+       vegan
+      <% } %>
+      <% if (element.attributes.spicy == true) { %>
+       spicy
+      <% } %>
     </p>
   </div>
 </div>

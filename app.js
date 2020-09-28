@@ -3,12 +3,44 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var dish = require('./models/dish');
+var spot = require('./models/restaurant');
+var bodyParser = require('body-parser');
+var functions = require('./functions');
+
+
+// mongo setup
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/test', { useNewUrlParser: true });
+
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function () {
+  console.log('we are live');
+});
+
+spot.create({name:"MyGoods"},function(err,newEntry){
+  if(err){
+    console.log(err);
+  }
+})
+
+// schema construction
+// const kittySchema = new mongoose.Schema({
+//   name: String
+// });
+
+// const Kitten = mongoose.model('Kitten', kittySchema);
+
+// const silence = new Kitten({ name: 'Silence' });
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
 
+
+app.use(bodyParser.urlencoded({ exnteded: true }));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
