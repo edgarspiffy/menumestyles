@@ -12,9 +12,10 @@ function loadEventListener(){
 function alertMe(e){
   console.log(e.target.value);
   console.log(e.target.name);
-  attributes.forEach(som => {
-    console.log(som.innerText);
-  })
+  
+  // attributes.forEach(som => {
+  //   console.log(som.innerText);
+  // })
 }
 
 

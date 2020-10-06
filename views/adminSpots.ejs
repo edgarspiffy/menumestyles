@@ -1,0 +1,14 @@
+<% include ./partials/mainHeader %>
+
+<div class="container">
+  <ol>
+  <% data.forEach(restaurant => { %>
+   <li><a href="edit/<%= restaurant._id %> "><%= restaurant.name %></a></li>
+  <% }) %>
+  </ol>
+</div>
+
+
+
+
+<% include ./partials/mainFooter %>

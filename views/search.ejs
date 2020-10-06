@@ -1,5 +1,4 @@
-<% include ./partials/header %>
-
+<% include ./partials/mainHeader %>
 
 <div class="my-bg-primary">
   <div class="container pt-2">
@@ -10,15 +9,22 @@
 
 
 
+
 <div class="container">
   <div class="row">
     <div class="col-lg-9" id='card-holder'>
-      <% data.forEach((element, index) => { %>
-        <% include ./partials/foodCard %>
+      <% if (Object.keys(data).length === 0) { %>
+       <h1>NOTHING HERE TRY REFINING YOUR SEARCH</h1>
+      <% } %>
+
+
+
+      <% data.forEach((element, index) => { %>    
+        <% include ./partials/cardFood %>
       <% }) %>
     </div>
-    <div class="col-lg-3">
-      <% include ./partials/filtersDesktop %>
+    <div class="col-lg-3 d-none d-lg-block " id='search-page-filters'>
+      <% include ./partials/filtersFood %>
     </div>
   </div>
 </div> 
@@ -27,4 +33,4 @@
 
 
 
-<% include ./partials/footer %>
+<% include ./partials/mainFooter %>

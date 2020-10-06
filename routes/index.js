@@ -1,9 +1,13 @@
 var express = require('express');
+const mongoose = require('mongoose');
 const dish = require('../models/dish');
 const spot = require('../models/restaurant');
 var router = express.Router();
-const mongoose = require('mongoose');
+
 var functions = require('../functions');
+const restaurant = require('../models/restaurant');
+
+
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -29,29 +33,30 @@ router.get('/search', function (req, res, next) {
 
 router.get('/spot/:id', function (req, res, next) {
   const restaurant = req.params.id
-  console.log(restaurant);
-  spot.findById(restaurant, function (err, found) {
-    if (err) {
+  res.render('spotInfo', { title: 'Searching',page_id: 'info-page'});
+});
+
+
+router.get('/adminspots',function(req,res,next){
+  restaurant.find({},function(err,found){
+    if(err){
       console.log(err);
     } else {
       console.log(found);
-      res.render('spotInfo', { title: 'Searching', page_id: 'search-page', data: found });
+      res.render('adminSpots', { title: 'Searching', data: found, page_id: 'info-page'});
     }
   })
-});
+})
 
-
-router.get('/test', function (req, res, next) {
-  console.log('this was called');
-  console.log(req.query.search);
-  
-  dish.find({},function(err,found){
+router.get('/edit/:id',function(req,res,next){
+  let yo = req.params.id;
+  restaurant.findById(yo,function(err,found){
     if(err){
       console.log(err);
     }else{
-      res.render('test', { title: 'Searching', page_id: 'search-page', data: found, query: req.query.search, functions:functions});
+      res.render('adminSpotEdit', { title: 'Searching', data: found, page_id: 'info-page' })
     }
   })
-});
+})
 
 module.exports = router;

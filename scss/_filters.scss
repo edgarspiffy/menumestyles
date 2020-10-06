@@ -1,0 +1,34 @@
+#home-page-filters .label-div {
+  display:inline-block;
+}
+
+#home-page-filters input {
+  display:none;
+}
+
+.filter-label {
+  border-radius: 5px;
+  margin:3px 1px;
+  border:#fff 2px solid;
+  padding:5px 10px;
+  background-color:$primary-color;
+  box-shadow: none;
+  color:#fff;
+  font-size:20px;
+}
+
+:checked + .filter-label {
+  background:white;
+  color:$primary-color;
+}
+
+#search-page-filters .label-div {
+  display:block;
+}
+
+
+#search-page-filters input {
+  display:none;
+}
+
+

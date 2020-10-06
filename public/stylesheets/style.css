@@ -2,6 +2,32 @@
 .my-bg-primary {
   background-color: #720B0B; }
 
+#home-page-filters .label-div {
+  display: inline-block; }
+
+#home-page-filters input {
+  display: none; }
+
+.filter-label {
+  border-radius: 5px;
+  margin: 3px 1px;
+  border: #fff 2px solid;
+  padding: 5px 10px;
+  background-color: #720B0B;
+  box-shadow: none;
+  color: #fff;
+  font-size: 20px; }
+
+:checked + .filter-label {
+  background: white;
+  color: #720B0B; }
+
+#search-page-filters .label-div {
+  display: block; }
+
+#search-page-filters input {
+  display: none; }
+
 .card {
   position: relative;
   margin-top: 30px;
@@ -35,6 +61,9 @@
     font-size: 12px;
     border-bottom: 12px; }
 
+hr {
+  margin-top: 12px; }
+
 .position-relative {
   position: relative;
   height: 60px; }
@@ -65,6 +94,10 @@
   color: #720B0B;
   opacity: 85%; }
 
+@media only screen and (max-width: 992px) {
+  html h1.primary-heading {
+    color: orange !important; } }
+
 body, html {
   font-family: 'Montserrat', sans-serif; }
 
@@ -73,6 +106,12 @@ body, html {
 
 .spacer-2 {
   padding-top: 117px; }
+
+h3 {
+  color: white; }
+
+.nav-link {
+  color: white !important; }
 
 .primary-heading {
   font-size: 24px;
@@ -100,50 +139,3 @@ body, html {
 
 .nav-col {
   background-color: #720B0B !important; }
-
-.navbar-toggler-icon {
-  position: absolute;
-  top: 10px;
-  right: 10px; }
-
-hr {
-  margin-top: 12px; }
-
-.search-bar {
-  padding-bottom: 15px; }
-  .search-bar input {
-    height: 40px;
-    width: 96%;
-    position: relative;
-    display: block;
-    margin: 0 auto;
-    border-radius: 5px;
-    border: 0px solid black; }
-
-.filter-buttons {
-  padding-left: 0px;
-  margin: 0 auto; }
-
-.filter-buttons li {
-  display: inline; }
-
-.filter-buttons li button {
-  border-radius: 5px;
-  margin: 3px 1px;
-  border: #fff 2px solid;
-  padding: 5px 10px;
-  background-color: #720B0B;
-  box-shadow: none;
-  color: #fff;
-  opacity: 85%;
-  font-size: 20px; }
-
-.filter-buttons li button.active {
-  background-color: #fff;
-  color: #720B0B;
-  opacity: 90%; }
-
-.filter-buttons li button:hover {
-  background-color: #fff;
-  color: #720B0B;
-  opacity: 90%; }

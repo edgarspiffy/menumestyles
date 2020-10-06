@@ -1,0 +1,45 @@
+Major Missing Components
+Create and Update DB
+DB Goal:
+Add Hours to a collection and upadte all reference collections
+
+THINGS TO TACKLE
+DB
+1. How to update Location update and have changes propogate to reference data
+updateMany(id,set to reflect new var)
+
+ID:5f6c0f1d3ac9ff9f1e3a09c0
+
+
+load("/Users/admin/Desktop/jstestfile.js")
+db.dishes.find({"restaurantID":"5f6c0f1d3ac9ff9f1e3a09c0"}).pretty()
+
+db.dishes.updateMany(
+  { "restaurantID": "5f6c0f1d3ac9ff9f1e3a09c0" },
+  {$set: { workingHours: "24Hours" }}
+)
+
+
+
+2. ability to customize query search to include parameters (node)
+
+
+
+
+3. Add return sort
+
+Style
+1. Update filter look on mobile
+2. add filters to home propogate
+
+App Structure:
+Include clickable link to restaurant info. 
+
+
+
+restaurant link attribute
+
+if no resutls found
+do this.
+
+

@@ -19,11 +19,11 @@ db.once('open', function () {
   console.log('we are live');
 });
 
-spot.create({name:"MyGoods"},function(err,newEntry){
-  if(err){
-    console.log(err);
-  }
-})
+// spot.create({name:"MyGoods"},function(err,newEntry){
+//   if(err){
+//     console.log(err);
+//   }
+// })
 
 // schema construction
 // const kittySchema = new mongoose.Schema({

@@ -1,4 +1,4 @@
-<% include ./partials/header %>
+<% include ./partials/mainHeader %>
 
 <div class='spacer'>
 </div>
@@ -11,37 +11,30 @@
   <% include ./partials/searchBar %>
 </div>
 
-<!-- 
-<div class='spacer-2'>
+<div class='spacer'>
 </div>
 
-
-<div class="container pb-4">
-  <div class="">
-    <h2 class='my-title'>Dish Criterea</h2>
-  </div>
-  <ul class='filter-buttons'>
-    <li><button>Vegan</button></li>
-    <li><button>Spicy</button></li>
-    <li><button class='active'>Happy Hour</button></li>
-    <li><button>$10 <&nbsp< /button>
-    </li>
-  </ul>
+<div class="container">
+<h3>Customize your search by checking boxes</h3>
 </div>
 
 
 
-<div class="container pb-4">
-  <div class="">
-    <h2 class='my-title'>Spot Criterea</h2>
+<div class="container">
+  <div id="home-page-filters">
+  <h4>Food Filter</h4>
+    <% include ./partials/filtersSpot %>
   </div>
-  <ul class='filter-buttons'>
-    <li><button>Beer</button></li>
-    <li><button>Mexican</button></li>
-    <li><button class='active'>Something Bomb</button></li>
-    <li><button>Hole In The Whole</button></li>
-  </ul>
-</div> -->
+</div>
 
 
-<% include ./partials/footer %>
+<div class="container">
+  <div id="home-page-filters">
+    <h4>Spot Filterr</h4>
+    <% include ./partials/filtersFood %>
+  </div>
+</div>
+
+
+
+<% include ./partials/mainFooter %>
