@@ -1,4 +1,10 @@
 Major Missing Components
+
+I figured out how to update the search
+actual ranking factor will most likely be from teh ejs file
+
+
+
 Create and Update DB
 DB Goal:
 Add Hours to a collection and upadte all reference collections
@@ -9,6 +15,8 @@ DB
 updateMany(id,set to reflect new var)
 
 ID:5f6c0f1d3ac9ff9f1e3a09c0
+
+SEARCH LOWER CAP NEEDS TO SEARCH LOWER CAPS
 
 
 load("/Users/admin/Desktop/jstestfile.js")

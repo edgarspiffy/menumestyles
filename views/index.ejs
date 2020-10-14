@@ -2,38 +2,45 @@
 
 <div class='spacer'>
 </div>
-
+<div class='spacer'>
+</div>
+<!-- 
 <div class="container">
   <h1 class='primary-heading'>Discover New Dishes<br>From Your Favorite Spots</h1>
-</div>
+</div> -->
 
 <div class="container search-bar-container">
   <% include ./partials/searchBar %>
 </div>
 
-<div class='spacer'>
+
+<div class="pt-4 pb-1 container">
+<h2>I only want to see dishes that are</h2>
 </div>
 
 <div class="container">
-<h3>Customize your search by checking boxes</h3>
-</div>
-
-
-
-<div class="container">
-  <div id="home-page-filters">
-  <h4>Food Filter</h4>
-    <% include ./partials/filtersSpot %>
+  <div class="row">
+    <div id="home-page-filters" class='mx-auto d-block'>
+        <% include ./partials/filtersFood %>
+        
+    </div>
   </div>
-</div>
+</div> 
 
+<div class='pt-4 pb-1 container'>
+<h2>I only want to see dishes that are</h2>
+</div>
 
 <div class="container">
-  <div id="home-page-filters">
-    <h4>Spot Filterr</h4>
-    <% include ./partials/filtersFood %>
+  <div class="row">
+    <div id="home-page-filters" class='mx-auto d-block'>
+        <% include ./partials/filtersSpot %>
+    </div>
   </div>
-</div>
+</div> 
+
+
+
 
 
 

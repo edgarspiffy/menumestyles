@@ -16,7 +16,8 @@
   background-color: #720B0B;
   box-shadow: none;
   color: #fff;
-  font-size: 20px; }
+  font-size: 16px;
+  display: inline-block; }
 
 :checked + .filter-label {
   background: white;
@@ -64,6 +65,10 @@
 hr {
   margin-top: 12px; }
 
+.card-link {
+  color: #720B0B !important;
+  text-decoration: underline; }
+
 .position-relative {
   position: relative;
   height: 60px; }
@@ -94,9 +99,38 @@ hr {
   color: #720B0B;
   opacity: 85%; }
 
+.search-bar-icon-2 {
+  display: none; }
+
 @media only screen and (max-width: 992px) {
-  html h1.primary-heading {
-    color: orange !important; } }
+  #search-page .position-relative {
+    position: relative;
+    height: 50px; }
+  #search-page .search-bar {
+    height: 38px;
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+    border-radius: 5px;
+    border: 0px solid black;
+    position: absolute; }
+  #search-page .search-bar[type=text] {
+    font-size: 24px;
+    padding: 5px 20px 5px 34px;
+    font-weight: 500; }
+  #search-page .search-bar-container {
+    padding-top: 25px;
+    z-index: 5; }
+  #search-page .search-bar-icon {
+    display: none; }
+  #search-page .search-bar-icon-2 {
+    display: block;
+    position: absolute;
+    z-index: 15;
+    top: 10px;
+    left: 10px;
+    color: #720B0B;
+    opacity: 85%; } }
 
 body, html {
   font-family: 'Montserrat', sans-serif; }
@@ -112,6 +146,35 @@ h3 {
 
 .nav-link {
   color: white !important; }
+
+#home-page h1 {
+  font-size: 34px; }
+
+#home-page h2 {
+  font-size: 20px; }
+
+#home-page h1, #home-page h2, #home-page h3, #home-page h4, #home-page h5, #home-page h6, #home-page p {
+  color: white;
+  text-align: center; }
+
+.cuz {
+  margin: 0 auto; }
+
+.filters h3 {
+  padding-top: 20px;
+  color: black;
+  font-size: 20px; }
+
+.form-submit-button {
+  border-radius: 5px;
+  margin: 3px 1px;
+  border: #fff 2px solid;
+  padding: 5px 10px;
+  background-color: blue;
+  box-shadow: none;
+  color: #fff;
+  font-size: 16px;
+  display: inline-block; }
 
 .primary-heading {
   font-size: 24px;
@@ -139,3 +202,62 @@ h3 {
 
 .nav-col {
   background-color: #720B0B !important; }
+
+.no-results-message {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 20px; }
+
+.footer {
+  position: static;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
+  text-align: center;
+  color: white;
+  margin-top: 30px;
+  padding-top: 5px;
+  padding-bottom: 5px; }
+  .footer a {
+    color: white;
+    text-decoration: underline; }
+
+.filters-mobile button {
+  background: #720B0B;
+  color: white;
+  border-radius: 5px;
+  padding: 3px 10px;
+  border: none;
+  margin-top: 10px; }
+
+#search-page .label-div {
+  display: inline-block; }
+
+#search-page input {
+  display: none; }
+
+#search-page .filter-label {
+  border-radius: 5px;
+  margin: 0px 0px;
+  border: #fff 0px solid;
+  padding: 3px 10px;
+  margin-top: 5px;
+  background-color: #720B0B;
+  box-shadow: none;
+  color: #fff;
+  font-size: 16px;
+  display: inline-block; }
+
+:checked + .filter-label {
+  background: white;
+  color: #720B0B; }
+
+#search-page .label-div {
+  display: inline-block; }
+
+#search-page input {
+  display: none; }
+
+.adding-form {
+  position: relative;
+  display: none; }

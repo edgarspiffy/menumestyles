@@ -4,6 +4,8 @@ const spotSchema = new mongoose.Schema({
   name: String,
   phone: String,
   address: String,
+  city: String,
+  zip: String,
   hours:{
     mon: String,
     tue: String,
