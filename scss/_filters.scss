@@ -14,7 +14,8 @@
   background-color:$primary-color;
   box-shadow: none;
   color:#fff;
-  font-size:20px;
+  font-size:16px;
+  display:inline-block;
 }
 
 :checked + .filter-label {

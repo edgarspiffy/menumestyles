@@ -62,4 +62,10 @@ typings/
 # next.js build output
 .next
 
+<<<<<<< HEAD
 notes.txt
+=======
+#removed admin
+./views/adminSpotEdit.ejs
+./views/adminSpots.ejs
+>>>>>>> home_page_styles

@@ -2,19 +2,39 @@
 
 <div class="my-bg-primary">
   <div class="container pt-2">
-    <% include ./partials/searchBar %>
+    <% include ./partials/searchBar2 %>
   </div>
 </div>
 
+<div class="container d-block d-lg-none filters-mobile">
+ <button>Filters</button>
+ <button>Sort</button>
+  <div id="home-page-filters" class='mx-auto d-block'>
+    <% include ./partials/filtersFood %>
+  </div>
+</div>
 
-
+<!-- <div class="container-fluid my-bg-primary">
+  <div class="container">
+    <div class="container">
+      <div class="row">
+       
+      </div>
+    </div>
+  </div>
+</div> -->
 
 
 <div class="container">
   <div class="row">
     <div class="col-lg-9" id='card-holder'>
       <% if (Object.keys(data).length === 0) { %>
-       <h1>NOTHING HERE TRY REFINING YOUR SEARCH</h1>
+       <div class='no-results-message'>
+         <p>We didn't find anything for "<%=ingredient%>"<br>
+        try updating your search
+        </p>
+
+       </div>
       <% } %>
 
 
@@ -23,13 +43,20 @@
         <% include ./partials/cardFood %>
       <% }) %>
     </div>
-    <div class="col-lg-3 d-none d-lg-block " id='search-page-filters'>
-      <% include ./partials/filtersFood %>
+    <div class="col-lg-3 d-none d-lg-block filters " id='search-page-filters'>
+      <h3>Specify Search</h3>
+      <% include ./partials/filtersFood2 %>
     </div>
   </div>
 </div> 
 
 
+
+<% if (Object.keys(data).length !== 0) { %>
+<div class='my-bg-primary footer'>
+  <a href="#target-link">back to the top</a>
+</div>
+<% } %>
 
 
 
