@@ -6,12 +6,15 @@ var logger = require('morgan');
 var dish = require('./models/dish');
 var spot = require('./models/restaurant');
 var bodyParser = require('body-parser');
-var functions = require('./functions');
+
 
 
 // mongo setup
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test', { useNewUrlParser: true });
+//mongoose.connect('mongodb://localhost/test', { useUnifiedTopology: true, useNewUrlParser: true  });
+
+mongoose.connect('mongodb://admin:Abcd!234@ds153314.mlab.com:53314/crayvyt', { useUnifiedTopology: true, useNewUrlParser: true  });
+
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));

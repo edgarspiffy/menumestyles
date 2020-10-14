@@ -4,7 +4,6 @@ const dish = require('../models/dish');
 const spot = require('../models/restaurant');
 var router = express.Router();
 
-var functions = require('../functions');
 const restaurant = require('../models/restaurant');
 
 
