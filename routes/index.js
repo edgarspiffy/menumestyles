@@ -3,12 +3,6 @@ const mongoose = require('mongoose');
 const dish = require('../models/dish');
 const spot = require('../models/restaurant');
 var router = express.Router();
-<<<<<<< HEAD
-
-=======
-var bodyParser = require('body-parser');
-var functions = require('../functions');
->>>>>>> home_page_styles
 const restaurant = require('../models/restaurant');
 
 
