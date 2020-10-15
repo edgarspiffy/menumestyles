@@ -1,60 +1,63 @@
 <% include ./partials/mainHeader %>
 
 
-<div class="container-fluid my-bg-primary pb-2">
+<div class="container-fluid my-bg-primary pb-3">
   <% include ./partials/searchBar %>
 </div>
 
-<div style='min-height:100vh' class='bg-primary'>
 
-
-
-</div>
-
-
-<!-- <div class="container d-block d-lg-none filters-mobile">
-  <button>Filters</button>
-  <button>Sort</button>
-  <div id="home-page-filters" class='mx-auto d-block'>
-    <% include ./partials/filtersFood %>
-  </div>
+<!-- <div style='min-height:100vh' class='bg-primary'>
 </div> -->
 
-<!-- <div class="container-fluid my-bg-primary">
-  <div class="container">
-    <div class="container">
-      <div class="row">
-       
-      </div>
-    </div>
-  </div>
-</div> -->
 
-<!-- 
+
+
+
 <div class="container">
   <div class="row">
     <div class="col-lg-9" id='card-holder'>
-      <% if (Object.keys(data).length === 0) { %>
-      <div class='no-results-message'>
-        <p>We didn't find anything for "<%=ingredient%>"<br>
-          try updating your search
-        </p>
-
-      </div>
-      <% } %>
-
-
-
+      <% include ./partials/noResults %>
       <% data.forEach((element, index) => { %>
       <% include ./partials/cardFood %>
       <% }) %>
     </div>
     <div class="col-lg-3 d-none d-lg-block filters " id='search-page-filters'>
       <h3>Specify Search</h3>
-      <% include ./partials/filtersFood2 %>
+      <% spotFilters.forEach(filter => { %>
+      <% include ./partials/filters %>
+      <% }) %>
+      <h3>Specify Search</h3>
+      <% foodFilters.forEach(filter => { %>
+      <% include ./partials/filters %>
+      <% }) %>
     </div>
   </div>
-</div> -->
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -63,7 +66,6 @@
   <a href="#target-link">back to the top</a>
 </div>
 <% } %>
-
 
 
 <% include ./partials/mainFooter %>

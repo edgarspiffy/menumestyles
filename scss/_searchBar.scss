@@ -1,3 +1,7 @@
+#home-page .search-bar-slider {
+    display:none;
+  }
+
 .search-bar-container{
   .search-bar {
     width: 100%;
@@ -20,7 +24,16 @@
     color:$primary-color;
     opacity:85%;
   }
+   .search-bar-slider {
+    display:none;
+  }
 }
+
+
+
+
+
+
 
 @media only screen and (max-width: 992px) {
   .search-bar-container{
@@ -34,7 +47,7 @@
     }
     .search-bar[type=text]{
       font-size: 20px;
-      padding:5px 20px 5px 44px;
+      padding:5px 44px 5px 44px;
       font-weight: 500;
     }
     .search-bar-icon {
@@ -43,6 +56,16 @@
       z-index: 15;
       top:7px;
       left:7px;
+      color:$primary-color;
+      opacity:85%;
+    }
+    .search-bar-slider {
+      display:block;
+      font-size:28px;
+      position: absolute;
+      z-index: 15;
+      top:6px;
+      right:7px;
       color:$primary-color;
       opacity:85%;
     }

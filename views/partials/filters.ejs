@@ -1,0 +1,5 @@
+<div class='label-div'>
+  <input form='main-form' type="checkbox" id="<%= filter %>" name="<%= filter %>" value="true"
+    <% if (path !== "/" && queryArray.includes(filter)) { %> checked <% } %>>
+  <label class='filter-label' form='main-form' for="<%= filter %>"><%= filter %></label>
+</div>

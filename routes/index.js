@@ -21,17 +21,17 @@ router.get('/', function (req, res, next) {
 
 
 router.get('/search', function (req, res, next) {
+  let queryArray = Object.keys(req.query);
+
+
   let search = {};
-  let query = req.query;
   let ingredient = req.query.ingredient;
   let newIngreident = ingredient.toLowerCase();
   search.ingredients = newIngreident;
-
   let vegan = req.query.vegan;
-  console.log(vegan);
   let spicy = req.query.spicy;
   let vegetarian = req.query.vegetarian;
-
+  console.log(req.query);
   if (vegan) {
     let key = "attributes.vegan"
     search[key] = true;
@@ -44,7 +44,7 @@ router.get('/search', function (req, res, next) {
     let key = "attributes.vegetarian"
     search[key] = true;
   }
-  console.log(search);
+  // console.log(search);
   dish.find(search, function (err, found) {
     if (err) {
       console.log(err);
@@ -53,11 +53,14 @@ router.get('/search', function (req, res, next) {
         title: 'Searching',
         page_id: 'search-page',
         data: found,
+        queryArray: queryArray,
         ingredient: ingredient,
         vegan: vegan,
         spicy: spicy,
         vegetarian: vegetarian,
-        path: req.url
+        path: req.url,
+        foodFilters: foodFilters,
+        spotFilters: spotFilters
       });
     }
   })
