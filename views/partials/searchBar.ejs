@@ -1,9 +1,9 @@
-
-
-<form id='main-form' action="/search" method='GET'>
-  <div class='position-relative'>
-    <input class='search-bar' type="text" placeholder="Craving something with" name='ingredient' required>
-    <i class="fa-2x search-bar-icon fas fa-search"></i>
-  </div>
-</form>
-
+<div class="container search-bar-container">
+  <form id='main-form' action="/search" method='GET'>
+    <div class='position-relative'>
+      <input class='search-bar' type="text" placeholder="Craving something with" name='ingredient'
+        <% if (path !== "/") { %> value=<%=ingredient%> <% } %> required>
+      <i class="search-bar-icon fas fa-search"></i>
+    </div>
+  </form>
+</div>

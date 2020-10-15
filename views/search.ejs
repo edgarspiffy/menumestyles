@@ -1,18 +1,24 @@
 <% include ./partials/mainHeader %>
 
-<div class="my-bg-primary">
-  <div class="container pt-2">
-    <% include ./partials/searchBar2 %>
-  </div>
+
+<div class="container-fluid my-bg-primary pb-2">
+  <% include ./partials/searchBar %>
 </div>
 
-<div class="container d-block d-lg-none filters-mobile">
- <button>Filters</button>
- <button>Sort</button>
+<div style='min-height:100vh' class='bg-primary'>
+
+
+
+</div>
+
+
+<!-- <div class="container d-block d-lg-none filters-mobile">
+  <button>Filters</button>
+  <button>Sort</button>
   <div id="home-page-filters" class='mx-auto d-block'>
     <% include ./partials/filtersFood %>
   </div>
-</div>
+</div> -->
 
 <!-- <div class="container-fluid my-bg-primary">
   <div class="container">
@@ -24,23 +30,23 @@
   </div>
 </div> -->
 
-
+<!-- 
 <div class="container">
   <div class="row">
     <div class="col-lg-9" id='card-holder'>
       <% if (Object.keys(data).length === 0) { %>
-       <div class='no-results-message'>
-         <p>We didn't find anything for "<%=ingredient%>"<br>
-        try updating your search
+      <div class='no-results-message'>
+        <p>We didn't find anything for "<%=ingredient%>"<br>
+          try updating your search
         </p>
 
-       </div>
+      </div>
       <% } %>
 
 
 
-      <% data.forEach((element, index) => { %>    
-        <% include ./partials/cardFood %>
+      <% data.forEach((element, index) => { %>
+      <% include ./partials/cardFood %>
       <% }) %>
     </div>
     <div class="col-lg-3 d-none d-lg-block filters " id='search-page-filters'>
@@ -48,7 +54,7 @@
       <% include ./partials/filtersFood2 %>
     </div>
   </div>
-</div> 
+</div> -->
 
 
 
