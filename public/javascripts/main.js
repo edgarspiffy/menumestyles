@@ -7,10 +7,10 @@ const hoursButton = document.querySelector('#duplicate-hours');
 
 
 loadEventListener();
-function loadEventListener(){
-  addNew.addEventListener('click',displayForm);
-  
-  hoursButton.addEventListener('click',duplicateHours);
+function loadEventListener() {
+  addNew.addEventListener('click', displayForm);
+
+  hoursButton.addEventListener('click', duplicateHours);
 
 
 };
@@ -18,14 +18,14 @@ function loadEventListener(){
 
 
 let selected = true;
-function displayForm(e){
+function displayForm(e) {
   const theInput = document.querySelector('.adding-form');
-  if (selected == true){
+  if (selected == true) {
     theInput.style.display = 'block'
     selected = false;
     return;
   }
-  if(selected == false){
+  if (selected == false) {
     theInput.style.display = 'none'
     selected = true;
     return;
@@ -33,7 +33,7 @@ function displayForm(e){
   e.preventDefault();
 }
 
-function duplicateHours(e){
+function duplicateHours(e) {
   let mon = document.querySelector('#mon').value;
   let tue = document.querySelector('#tue');
   let wed = document.querySelector('#wed');
@@ -58,3 +58,10 @@ function duplicateHours(e){
 
 
 
+function openNav() {
+  document.getElementById('mobile-filters').style.width = '100%';
+};
+
+function closeNav() {
+  document.getElementById('mobile-filters').style.width = '0%';
+}

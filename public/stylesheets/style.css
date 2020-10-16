@@ -23,9 +23,6 @@
   background: white;
   color: #720B0B; }
 
-#search-page .search-bar-container {
-  padding: 0; }
-
 #search-page .label-div {
   display: block; }
 
@@ -35,8 +32,8 @@
 #search-page .filter-label {
   border-radius: 5px;
   margin: 0px 0px;
-  border: #fff 2px solid;
-  padding: 3px 10px;
+  border: #fff 1px solid;
+  padding: 2px 7px;
   margin-top: 5px;
   background-color: #720B0B;
   box-shadow: none;
@@ -46,7 +43,53 @@
 #search-page :checked + .filter-label {
   background: white;
   color: #720B0B;
-  border: #fff 2px solid; }
+  border: #fff 1px solid; }
+
+#search-page #mobile-filters {
+  display: block;
+  position: fixed;
+  right: 0;
+  top: 0px;
+  background: #720B0B;
+  width: 0%;
+  height: 100%;
+  overflow-x: hidden;
+  z-index: 15;
+  transition: all .5s; }
+  #search-page #mobile-filters .close-button-icon {
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    font-size: 2rem;
+    color: white;
+    opacity: 85%; }
+  #search-page #mobile-filters .label-div {
+    position: relative;
+    top: 130px;
+    width: 100%;
+    text-align: center; }
+  #search-page #mobile-filters .heading {
+    position: relative;
+    top: 130px;
+    width: 100%;
+    text-align: center; }
+  #search-page #mobile-filters input {
+    display: none; }
+  #search-page #mobile-filters .filter-label {
+    border-radius: 5px;
+    margin: 5px 5px;
+    border: #fff 1px solid;
+    padding: 2px 7px;
+    margin-top: 5px;
+    background-color: #720B0B;
+    box-shadow: none;
+    color: #fff;
+    font-size: 16px;
+    justify-content: center; }
+  #search-page #mobile-filters :checked + .filter-label {
+    background: white;
+    color: #720B0B;
+    border: #fff 1px solid; }
 
 .card {
   position: relative;
@@ -90,6 +133,9 @@ hr {
 
 #home-page .search-bar-slider {
   display: none; }
+
+#search-page .search-bar-container {
+  padding: 0; }
 
 .search-bar-container .search-bar {
   width: 100%;
@@ -163,6 +209,9 @@ h3 {
 #home-page h1, #home-page h2, #home-page h3, #home-page h4, #home-page h5, #home-page h6, #home-page p {
   color: white;
   text-align: center; }
+
+#search-page {
+  background: #d6d6d6; }
 
 .cuz {
   margin: 0 auto; }

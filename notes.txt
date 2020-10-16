@@ -51,3 +51,20 @@ if no resutls found
 do this.
 
 
+<!-- DONT DELETE -->
+<!-- <div class="position-relative">
+  <div id='mobile-filters' class="my-bg-primary">
+    <h3>Specify Search</h3>
+    <div class="my-bg-primary d-flex flex-wrap justify-content-center">
+      <% spotFilters.forEach(filter => { %>
+      <% include ./partials/filters %>
+      <% }) %>
+    </div>
+    <h3>Specify Search</h3>
+    <div class="my-bg-primary d-flex flex-wrap justify-content-center">
+      <% foodFilters.forEach(filter => { %>
+      <% include ./partials/filters %>
+      <% }) %>
+    </div>
+  </div>
+</div> -->

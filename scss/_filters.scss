@@ -1,4 +1,3 @@
-
 #home-page {
   .label-div {
     display:inline-block;
@@ -25,9 +24,6 @@
 
 
 #search-page {
-  .search-bar-container {
-    padding:0;
-  }
   .label-div {
     display:block;
   }
@@ -37,8 +33,8 @@
   .filter-label {
     border-radius: 5px;
     margin:0px 0px;
-    border:#fff 2px solid;
-    padding:3px 10px;
+    border:#fff 1px solid;
+    padding:2px 7px;
     margin-top:5px;
     background-color:$primary-color;
     box-shadow: none;
@@ -48,21 +44,101 @@
   :checked + .filter-label {
     background:white;
     color:$primary-color;
-    border:#fff 2px solid;
+    border:#fff 1px solid;
   }
 }
 
 
 
 
-// .filters-mobile {
-//   button {
-//     background:$primary-color;
-//     color:white;
+
+
+
+
+
+
+
+// #search-page #mobile-filters {
+//   z-index: 15;
+//   width:100%;
+//   .label-div {
+//     display:inline-block;
+//     text-align: center;
+//   }
+//   input {
+//     display:none;
+//   }
+//   .filter-label {
 //     border-radius: 5px;
-//     padding:3px 10px;
-//     border:none;
-//     margin-top: 10px;
-    
+//     margin:5px 5px;
+//     border:#fff 1px solid;
+//     padding:2px 7px;
+//     margin-top:5px;
+//     background-color:$primary-color;
+//     box-shadow: none;
+//     color:#fff;
+//     font-size:16px;
+//     justify-content: center;
+//   }
+//   :checked + .filter-label {
+//     background:white;
+//     color:$primary-color;
+//     border:#fff 1px solid;
 //   }
 // }
+
+
+#search-page #mobile-filters {
+  display:block;
+  position:fixed;
+  right:0;
+  top:0px;
+  background:$primary-color;
+  width:0%;
+  height:100%;
+  overflow-x:hidden;
+  z-index:15;
+  transition:all .5s;
+  .close-button-icon {
+    position:absolute;
+    top:60px;
+    right:20px;
+    font-size:2rem;
+    color:white;
+    opacity:85%;
+  }
+  .label-div {
+    position:relative;
+    top:130px;
+    width:100%;
+    text-align: center;
+  }
+  .heading {
+    position:relative;
+    top:130px;
+    width:100%;
+    text-align: center;
+  }
+  input {
+    display:none;
+  }
+  .filter-label {
+    border-radius: 5px;
+    margin:5px 5px;
+    border:#fff 1px solid;
+    padding:2px 7px;
+    margin-top:5px;
+    background-color:$primary-color;
+    box-shadow: none;
+    color:#fff;
+    font-size:16px;
+    justify-content: center;
+  }
+  :checked + .filter-label {
+    background:white;
+    color:$primary-color;
+    border:#fff 1px solid;
+  }
+}
+
+
