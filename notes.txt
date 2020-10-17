@@ -50,7 +50,7 @@ restaurant link attribute
 if no resutls found
 do this.
 
-
+center align text
 <!-- DONT DELETE -->
 <!-- <div class="position-relative">
   <div id='mobile-filters' class="my-bg-primary">

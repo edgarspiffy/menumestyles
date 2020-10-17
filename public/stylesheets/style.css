@@ -10,7 +10,7 @@
 
 #home-page .filter-label {
   border-radius: 5px;
-  margin: 3px 1px;
+  margin: 3px 3px;
   border: #fff 2px solid;
   padding: 5px 10px;
   background-color: #720B0B;
@@ -23,13 +23,13 @@
   background: white;
   color: #720B0B; }
 
-#search-page .label-div {
+#search-page #search-page-filters .label-div {
   display: block; }
 
-#search-page input {
+#search-page #search-page-filters input {
   display: none; }
 
-#search-page .filter-label {
+#search-page #search-page-filters .filter-label {
   border-radius: 5px;
   margin: 0px 0px;
   border: #fff 1px solid;
@@ -40,7 +40,7 @@
   color: #fff;
   font-size: 16px; }
 
-#search-page :checked + .filter-label {
+#search-page #search-page-filters :checked + .filter-label {
   background: white;
   color: #720B0B;
   border: #fff 1px solid; }
@@ -170,7 +170,7 @@ hr {
     border-radius: 5px;
     border: none; }
   .search-bar-container .search-bar[type=text] {
-    font-size: 20px;
+    font-size: 18px;
     padding: 5px 44px 5px 44px;
     font-weight: 500; }
   .search-bar-container .search-bar-icon {
@@ -209,6 +209,11 @@ h3 {
 #home-page h1, #home-page h2, #home-page h3, #home-page h4, #home-page h5, #home-page h6, #home-page p {
   color: white;
   text-align: center; }
+
+#home-page .title {
+  font-size: 20px;
+  margin-bottom: 10px;
+  margin-top: 15px; }
 
 #search-page {
   background: #d6d6d6; }
