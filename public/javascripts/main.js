@@ -59,9 +59,9 @@ function duplicateHours(e) {
 
 
 function openNav() {
-  document.getElementById('mobile-filters').style.width = '100%';
+  document.getElementById('search-page-filters').style.width = '100%';
 };
 
 function closeNav() {
-  document.getElementById('mobile-filters').style.width = '0%';
+  document.getElementById('search-page-filters').style.width = '0%';
 }

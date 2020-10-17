@@ -32,7 +32,6 @@
 #search-page #search-page-filters .filter-label {
   border-radius: 5px;
   margin: 0px 0px;
-  border: #fff 1px solid;
   padding: 2px 7px;
   margin-top: 5px;
   background-color: #720B0B;
@@ -42,54 +41,62 @@
 
 #search-page #search-page-filters :checked + .filter-label {
   background: white;
-  color: #720B0B;
-  border: #fff 1px solid; }
+  color: #720B0B; }
 
-#search-page #mobile-filters {
-  display: block;
-  position: fixed;
-  right: 0;
-  top: 0px;
-  background: #720B0B;
-  width: 0%;
-  height: 100%;
-  overflow-x: hidden;
-  z-index: 15;
-  transition: all .5s; }
-  #search-page #mobile-filters .close-button-icon {
-    position: absolute;
-    top: 60px;
-    right: 20px;
-    font-size: 2rem;
-    color: white;
-    opacity: 85%; }
-  #search-page #mobile-filters .label-div {
-    position: relative;
-    top: 130px;
-    width: 100%;
-    text-align: center; }
-  #search-page #mobile-filters .heading {
-    position: relative;
-    top: 130px;
-    width: 100%;
-    text-align: center; }
-  #search-page #mobile-filters input {
-    display: none; }
-  #search-page #mobile-filters .filter-label {
-    border-radius: 5px;
-    margin: 5px 5px;
-    border: #fff 1px solid;
-    padding: 2px 7px;
-    margin-top: 5px;
-    background-color: #720B0B;
-    box-shadow: none;
-    color: #fff;
-    font-size: 16px;
-    justify-content: center; }
-  #search-page #mobile-filters :checked + .filter-label {
-    background: white;
-    color: #720B0B;
-    border: #fff 1px solid; }
+#search-page #search-page-filters .close-button-icon {
+  display: none; }
+
+@media only screen and (max-width: 992px) {
+  #search-page #search-page-filters {
+    padding-right: 0px;
+    padding-left: 0px;
+    display: block;
+    position: fixed;
+    right: 0;
+    top: 0px;
+    background: #720B0B;
+    width: 0%;
+    height: 100%;
+    overflow-x: hidden;
+    z-index: 15;
+    transition: all .5s; }
+    #search-page #search-page-filters .close-button-icon {
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      font-size: 2rem;
+      color: white;
+      opacity: 85%;
+      display: block; }
+    #search-page #search-page-filters .label-div {
+      position: relative;
+      top: 130px;
+      width: 100%;
+      text-align: center; }
+    #search-page #search-page-filters .heading {
+      position: relative;
+      top: 130px;
+      width: 100%;
+      text-align: center;
+      color: white;
+      font-size: 20px; }
+    #search-page #search-page-filters input {
+      display: none; }
+    #search-page #search-page-filters .filter-label {
+      border-radius: 5px;
+      margin: 5px 5px;
+      border: #fff 1px solid;
+      padding: 2px 7px;
+      margin-top: 5px;
+      background-color: #720B0B;
+      box-shadow: none;
+      color: #fff;
+      font-size: 16px;
+      justify-content: center; }
+    #search-page #search-page-filters :checked + .filter-label {
+      background: white;
+      color: #720B0B;
+      border: #fff 1px solid; } }
 
 .card {
   position: relative;

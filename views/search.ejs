@@ -6,7 +6,7 @@
 </div>
 
 
-<div class="position-relative">
+<!-- <div class="position-relative">
   <div id='mobile-filters'>
     <i onclick='closeNav()' class="close-button-icon far fa-times-circle"></i>
     <h3 class='heading'>Specify Search</h3>
@@ -18,7 +18,7 @@
     <% include ./partials/filters %>
     <% }) %>
   </div>
-</div>
+</div> -->
 
 
 
@@ -38,12 +38,13 @@
         <% include ./partials/cardFood %>
         <% }) %>
       </div>
-      <div class="col-lg-3 d-none d-lg-block filters " id='search-page-filters'>
-        <h3>Specify Search</h3>
+      <div class="col-lg-3 filters" id='search-page-filters'>
+        <i onclick='closeNav()' class="close-button-icon far fa-times-circle"></i>
+        <h3 class='heading'>Food Criteria</h3>
         <% spotFilters.forEach(filter => { %>
         <% include ./partials/filters %>
         <% }) %>
-        <h3>Specify Search</h3>
+        <h3 class='heading'>Spot Criteria</h3>
         <% foodFilters.forEach(filter => { %>
         <% include ./partials/filters %>
         <% }) %>
