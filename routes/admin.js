@@ -2,7 +2,6 @@ const express = require('express');
 var methodOverride = require('method-override')
 const mongoose = require('mongoose');
 const dish = require('../models/dish');
-const spot = require('../models/restaurant');
 const router = express.Router();
 const restaurant = require('../models/restaurant');
 
@@ -39,8 +38,6 @@ router.post('/', function (req, res, next) {
       sun: req.body.sun
     }
   };
-  // console.log(doc);
-  // res.redirect('/adminspots')
   restaurant.create(doc, function (err, data) {
     if (err) {
       console.log(err);
@@ -68,8 +65,8 @@ router.get('/:id', function (req, res, next) {
 
 
 router.delete('/:id', function (req, res) {
-  let yo = req.params.id;
-  restaurant.findByIdAndRemove({ _id: yo }, function (err) {
+  // let yo = req.params.id;
+  restaurant.findByIdAndRemove(req.params.id, function (err) {
     if (err) {
       console.log(err);
     } else {
@@ -79,9 +76,48 @@ router.delete('/:id', function (req, res) {
 })
 
 
-router.put('/edit', function (req, res) {
-  console.log('it worked');
-  res.redirect('/');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+router.put('/:id', function (req, res) {
+  const doc = {
+    name: req.body.name,
+    phone: req.body.phone,
+    address: req.body.address,
+    city: req.body.city,
+    zip: req.body.zip,
+    website: req.body.website,
+    hours: {
+      mon: req.body.mon,
+      tue: req.body.tue,
+      wed: req.body.wed,
+      thu: req.body.thu,
+      fri: req.body.fri,
+      sat: req.body.sat,
+      sun: req.body.sun
+    }
+  };
+  restaurant.findByIdAndUpdate(req.params.id, doc,function(err,updatedData){
+    if(err){
+      console.log(err);
+    }else{
+      res.redirect(`/admin/${req.params.id}`);
+    }
+  })
+
 })
 
 

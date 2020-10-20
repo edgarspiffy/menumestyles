@@ -2,13 +2,14 @@
 
 <div class="container pt-3">
 
-  <form method="POST" action="/admin/<%= id %> ?_method=delete">
-    <button>Delete</button>
+
+  <form method="POST" action="/admin/<%= id %>?_method=delete">
+    <button  style='background-color:red;color:white;'>Delete</button>
   </form>
 
 
 
-
+<!-- 
 
   <form action="/action_page.php">
 
@@ -27,11 +28,75 @@
       <input value='<%= data.address%>' type="text" class="form-control" id="website">
     </div>
 
-    <%= data %>
+   
 
 
     <button type="submit" class="btn btn-primary">Submit</button>
+  </form> -->
+
+
+  <%= data %>
+<div class="container edit-form">
+  <form method="POST" action="/admin/<%= id %>?_method=put">
+    <div class="form-group row">
+      <label class='col-sm-2 col-form-label' for="name">name</label>
+      <div class="col-sm-10">
+        <input value='<%= data.name %>' id='name' name='name' type="text" required>
+      </div>
+      <label class='col-sm-2 col-form-label' for="website">website</label>
+      <div class="col-sm-10">
+        <input value='<%= data.website %>' id='website' name='website' type="text" required>
+      </div>
+      <label class='col-sm-2 col-form-label' for="phone">phone</label>
+      <div class="col-sm-10">
+        <input value='<%= data.phone %>' id='phone' name='phone' type="text" required>
+      </div>
+      <label class='col-sm-2 col-form-label' for="address">address</label>
+      <div class="col-sm-10">
+        <input value='<%= data.address %>' id='address' name='address' type="text" required>
+      </div>
+      <label class='col-sm-2 col-form-label' for="city">city</label>
+      <div class="col-sm-10">
+        <input value='<%= data.city %>' id='city' name='city' value='Oxnard' type="text" required>
+      </div>
+      <label class='col-sm-2 col-form-label' for="zip">zip</label>
+      <div class="col-sm-10">
+        <input value='<%= data.zip %>' id='zip' name='zip' type="text" required>
+      </div>
+      <label class='col-sm-2 col-form-label' for="mon">mon</label>
+      <div class="col-sm-10">
+        <input value='<%= data.hours.mon %>' id='mon' name='mon' type="text" required>
+      </div>
+      <label class='col-sm-2 col-form-label' for="tue">tue</label>
+      <div class="col-sm-10">
+        <input value='<%= data.hours.tue %>' id='tue' name='tue' type="text" required>
+      </div>
+      <label class='col-sm-2 col-form-label' for="wed">wed</label>
+      <div class="col-sm-10">
+        <input value='<%= data.hours.wed %>' id='wed' name='wed' type="text" required>
+      </div>
+      <label class='col-sm-2 col-form-label' for="thu">thu</label>
+      <div class="col-sm-10">
+        <input value='<%= data.hours.thu %>' id='thu' name='thu' type="text" required>
+      </div>
+      <label class='col-sm-2 col-form-label' for="fri">fri</label>
+      <div class="col-sm-10">
+        <input value='<%= data.hours.fri %>' id='fri' name='fri' type="text" required>
+      </div>
+      <label class='col-sm-2 col-form-label' for="sat">sat</label>
+      <div class="col-sm-10">
+        <input value='<%= data.hours.sat %>' id='sat' name='sat' type="text" required>
+      </div>
+      <label class='col-sm-2 col-form-label' for="sun">sun</label>
+      <div class="col-sm-10">
+        <input value='<%= data.hours.sun %>' id='sun' name='sun' type="text" required>
+      </div>
+      <button class='btn btn-secondary'>UPDATE INFO</button>
+
+    </div>
   </form>
+</div>
+
 
 
 
