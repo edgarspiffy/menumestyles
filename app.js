@@ -1,5 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
+var methodOverride = require('method-override')
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -13,7 +14,7 @@ var bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 //mongoose.connect('mongodb://localhost/test', { useUnifiedTopology: true, useNewUrlParser: true  });
 
-mongoose.connect('mongodb://admin:Abcd!234@ds153314.mlab.com:53314/crayvyt', { useUnifiedTopology: true, useNewUrlParser: true  });
+mongoose.connect('mongodb://admin:Abcd!234@ds153314.mlab.com:53314/crayvyt', { useUnifiedTopology: true, useNewUrlParser: true });
 
 
 const db = mongoose.connection;
@@ -39,9 +40,10 @@ db.once('open', function () {
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var adminRouter = require('./routes/admin');
 
 var app = express();
-
+app.use(methodOverride('_method'))
 
 app.use(bodyParser.urlencoded({ exnteded: true }));
 // view engine setup
@@ -56,14 +58,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/admin', adminRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
