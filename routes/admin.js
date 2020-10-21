@@ -18,6 +18,10 @@ router.get('/', function (req, res, next) {
   })
 })
 
+router.post('/newDish',function(req,res,next){
+  console.log('dish add work');
+  res.redirect('/admin');
+})
 
 
 router.post('/', function (req, res, next) {

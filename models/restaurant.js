@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const dish = require('../models/dish');
 
 const spotSchema = new mongoose.Schema({
   name: String,
@@ -16,9 +17,12 @@ const spotSchema = new mongoose.Schema({
     sat: String,
     sun: String
   },
-  // dishes:[{
-  //   stories: [{ type: Schema.Types.ObjectId, ref: 'dishes' }]
-  // }]
+  dishes:[{
+    stories: [{ 
+      type: mongoose.Schema.Types.ObjectId, 
+      ref: 'dish' 
+    }]
+  }]
 });
 
 module.exports = mongoose.model("spot", spotSchema);

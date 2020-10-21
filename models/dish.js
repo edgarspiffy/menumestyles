@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const restaurant = require('../models/restaurant');
 
 const dishSchema = new mongoose.Schema({
   name:String,
@@ -8,7 +9,8 @@ const dishSchema = new mongoose.Schema({
     vegan:Boolean,
     spicy:Boolean,
     price:Number
-  }
+  },
+  restaurantID:String
 });
 
 module.exports = mongoose.model("dish", dishSchema);
