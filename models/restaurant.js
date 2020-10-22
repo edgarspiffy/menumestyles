@@ -18,10 +18,8 @@ const spotSchema = new mongoose.Schema({
     sun: String
   },
   dishes:[{
-    stories: [{ 
       type: mongoose.Schema.Types.ObjectId, 
       ref: 'dish' 
-    }]
   }]
 });
 

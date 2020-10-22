@@ -18,9 +18,33 @@ router.get('/', function (req, res, next) {
   })
 })
 
-router.post('/newDish',function(req,res,next){
-  console.log('dish add work');
-  res.redirect('/admin');
+
+// WORK HERE
+router.post('/:id/newDish',function(req,res,next){
+  const name = req.body.dishName;
+  restaurant.findById(req.params.id,function(err,found){
+    if(err){
+      console.log(err);
+    }else{
+    const doc = {
+      name: name,
+      spotName:found.name,
+      restaurantID:found._id
+    }
+    dish.create(doc,function(err,data){
+      console.log(data);
+      found.dishes.push(data._id);
+      found.save(function(err){
+        if(err){
+          console.log(err);
+        }else{
+          console.log(found);
+          res.redirect(`/admin/${req.params.id}`);
+        }
+      });
+    })
+    }
+  })
 })
 
 
@@ -78,21 +102,6 @@ router.delete('/:id', function (req, res) {
     }
   })
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -11,10 +11,14 @@ var bodyParser = require('body-parser');
 
 
 // mongo setup
+
 const mongoose = require('mongoose');
 //mongoose.connect('mongodb://localhost/test', { useUnifiedTopology: true, useNewUrlParser: true  });
-
-mongoose.connect('mongodb://admin:Abcd!234@ds153314.mlab.com:53314/crayvyt', { useUnifiedTopology: true, useNewUrlParser: true });
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
+mongoose.set('useUnifiedTopology', true);
+mongoose.connect('mongodb://admin:Abcd!234@ds153314.mlab.com:53314/crayvyt');
 
 
 const db = mongoose.connection;
