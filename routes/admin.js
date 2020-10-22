@@ -20,29 +20,29 @@ router.get('/', function (req, res, next) {
 
 
 // WORK HERE
-router.post('/:id/newDish',function(req,res,next){
+router.post('/:id/newDish', function (req, res, next) {
   const name = req.body.dishName;
-  restaurant.findById(req.params.id,function(err,found){
-    if(err){
+  restaurant.findById(req.params.id, function (err, found) {
+    if (err) {
       console.log(err);
-    }else{
-    const doc = {
-      name: name,
-      spotName:found.name,
-      restaurantID:found._id
-    }
-    dish.create(doc,function(err,data){
-      console.log(data);
-      found.dishes.push(data._id);
-      found.save(function(err){
-        if(err){
-          console.log(err);
-        }else{
-          console.log(found);
-          res.redirect(`/admin/${req.params.id}`);
-        }
-      });
-    })
+    } else {
+      const doc = {
+        name: name,
+        spotName: found.name,
+        restaurantID: found._id
+      }
+      dish.create(doc, function (err, data) {
+        console.log(data);
+        found.dishes.push(data._id);
+        found.save(function (err) {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log(found);
+            res.redirect(`/admin/${req.params.id}`);
+          }
+        });
+      })
     }
   })
 })
@@ -75,9 +75,25 @@ router.post('/', function (req, res, next) {
   })
 })
 
+// router.get('/:id', function (req, res, next) {
+//   let yo = req.params.id;
+//   restaurant.findById(yo, function (err, found) {
+//     if (err) {
+//       console.log(err);
+//     } else {
+//       res.render('admin/edit', {
+//         title: 'Searching',
+//         data: found,
+//         page_id: 'info-page',
+//         id: yo
+//       })
+//     }
+//   })
+// })
+
 router.get('/:id', function (req, res, next) {
   let yo = req.params.id;
-  restaurant.findById(yo, function (err, found) {
+  restaurant.findById(req.params.id).populate('dishes').exec(function (err, found) {
     if (err) {
       console.log(err);
     } else {
@@ -88,12 +104,12 @@ router.get('/:id', function (req, res, next) {
         id: yo
       })
     }
-  })
-})
+  });
+});
 
 
 router.delete('/:id', function (req, res) {
-  // let yo = req.params.id;
+
   restaurant.findByIdAndRemove(req.params.id, function (err) {
     if (err) {
       console.log(err);
@@ -123,10 +139,10 @@ router.put('/:id', function (req, res) {
       sun: req.body.sun
     }
   };
-  restaurant.findByIdAndUpdate(req.params.id, doc,function(err,updatedData){
-    if(err){
+  restaurant.findByIdAndUpdate(req.params.id, doc, function (err, updatedData) {
+    if (err) {
       console.log(err);
-    }else{
+    } else {
       res.redirect(`/admin/${req.params.id}`);
     }
   })
