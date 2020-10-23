@@ -3,14 +3,26 @@ const restaurant = require('../models/restaurant');
 
 const dishSchema = new mongoose.Schema({
   name:String,
-  spotName:String,
+  restaurant:String,
   ingredients:[String],
   attributes:{
     vegan:Boolean,
     spicy:Boolean,
     price:Number
   },
-  restaurantID:String
+  hours: {
+    mon: String,
+    tue: String,
+    wed: String,
+    thu: String,
+    fri: String,
+    sat: String,
+    sun: String
+  },
+  restaurantID: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'restaurant'
+  }]
 });
 
 module.exports = mongoose.model("dish", dishSchema);

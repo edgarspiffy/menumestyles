@@ -1,60 +1,15 @@
-const express = require('express');
-var methodOverride = require('method-override')
-const mongoose = require('mongoose');
-const dish = require('../models/dish');
-const router = express.Router();
-const restaurant = require('../models/restaurant');
+const express      = require('express');
+const dish         = require('../models/dish');
+const restaurant   = require('../models/restaurant');
+const router       = express.Router();
 
-
-
-router.get('/', function (req, res, next) {
-  restaurant.find({}, function (err, found) {
-    if (err) {
-      console.log(err);
-    } else {
-      // console.log(found);
-      res.render('admin/index', { title: 'Searching', data: found, page_id: 'info-page' });
-    }
-  })
-})
-
-
-// WORK HERE
-router.post('/:id/newDish', function (req, res, next) {
-  const name = req.body.dishName;
-  restaurant.findById(req.params.id, function (err, found) {
-    if (err) {
-      console.log(err);
-    } else {
-      const doc = {
-        name: name,
-        spotName: found.name,
-        restaurantID: found._id
-      }
-      dish.create(doc, function (err, data) {
-        console.log(data);
-        found.dishes.push(data._id);
-        found.save(function (err) {
-          if (err) {
-            console.log(err);
-          } else {
-            console.log(found);
-            res.redirect(`/admin/${req.params.id}`);
-          }
-        });
-      })
-    }
-  })
-})
-
-
-router.post('/', function (req, res, next) {
+function buildRestaurantModel(req){
   const doc = {
-    name: req.body.name,
-    phone: req.body.phone,
+    name:    req.body.name,
+    phone:   req.body.phone,
     address: req.body.address,
-    city: req.body.city,
-    zip: req.body.zip,
+    city:    req.body.city,
+    zip:     req.body.zip,
     website: req.body.website,
     hours: {
       mon: req.body.mon,
@@ -66,91 +21,145 @@ router.post('/', function (req, res, next) {
       sun: req.body.sun
     }
   };
-  restaurant.create(doc, function (err, data) {
-    if (err) {
-      console.log(err);
-    } else {
-      res.redirect('/admin')
-    }
-  })
-})
+  return doc;
+}
 
-// router.get('/:id', function (req, res, next) {
-//   let yo = req.params.id;
-//   restaurant.findById(yo, function (err, found) {
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       res.render('admin/edit', {
-//         title: 'Searching',
-//         data: found,
-//         page_id: 'info-page',
-//         id: yo
-//       })
-//     }
-//   })
-// })
 
-router.get('/:id', function (req, res, next) {
-  let yo = req.params.id;
-  restaurant.findById(req.params.id).populate('dishes').exec(function (err, found) {
-    if (err) {
+function buildDishModel(data,req){
+  const doc = {
+    name: req.body.dishName,
+    restaurant: data.name,
+    restaurantID: data._id,
+    hours: {
+      mon: data.hours.mon,
+      tue: data.hours.tue,
+      wed: data.hours.wed,
+      thu: data.hours.thu,
+      fri: data.hours.fri,
+      sat: data.hours.sat,
+      sun: data.hours.sun,
+    },
+  }
+  return doc;
+}
+
+// INDEX
+router.get('/', (req,res,next)=>{
+  restaurant.find({},(err,data)=>{
+    if(err){
       console.log(err);
-    } else {
-      res.render('admin/edit', {
-        title: 'Searching',
-        data: found,
-        page_id: 'info-page',
-        id: yo
-      })
+    }else{
+      res.render('admin/index',
+      {
+        title:    'admin',
+        page_id:  'admin-index',
+        data:      data
+      });
     }
   });
 });
 
+// CREATE NEW RESTAURANT
+router.post('/', (req, res, next) => {
+  restaurant.create(buildRestaurantModel(req), (err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.redirect('/admin');
+    }
+  });
+});
 
+// VIEW INDIVIDUAL LISTING WITH DISHES
+router.get('/:id', (req, res, next) => {
+  restaurant.findById(req.params.id)
+    .populate('dishes')
+    .exec((err, found)=>{
+    if (err) {
+      console.log(err);
+    } else {
+      res.render('admin/edit', 
+      {
+        title:   'Searching',
+        data:     found,
+        page_id: 'info-page',
+        id:       req.params.id
+      });
+    }
+  });
+});
+
+// DELETE RESTAURANT
 router.delete('/:id', function (req, res) {
-
   restaurant.findByIdAndRemove(req.params.id, function (err) {
     if (err) {
       console.log(err);
     } else {
       res.redirect('/admin');
     }
-  })
-})
+  });
+});
 
-
-
-router.put('/:id', function (req, res) {
-  const doc = {
-    name: req.body.name,
-    phone: req.body.phone,
-    address: req.body.address,
-    city: req.body.city,
-    zip: req.body.zip,
-    website: req.body.website,
-    hours: {
-      mon: req.body.mon,
-      tue: req.body.tue,
-      wed: req.body.wed,
-      thu: req.body.thu,
-      fri: req.body.fri,
-      sat: req.body.sat,
-      sun: req.body.sun
-    }
-  };
-  restaurant.findByIdAndUpdate(req.params.id, doc, function (err, updatedData) {
+// UPDATE RESTAURANT
+router.put('/:id', (req, res) => {
+  restaurant.findByIdAndUpdate(req.params.id, buildRestaurantModel(req), err => {
     if (err) {
       console.log(err);
     } else {
       res.redirect(`/admin/${req.params.id}`);
     }
-  })
+  });
+});
 
-})
+// CREATE NEW DISH
+// router.post('/:id/newDish', (req, res, next) => {
+//   const name = req.body.dishName;
+//   restaurant.findById(req.params.id, (err, found) => {
+//     if (err) {
+//       console.log(err);
+//     } else {
+//       const doc = {
+//         name: name,
+//         spotName: found.name,
+//         restaurantID: found._id
+//       }
+//       dish.create(doc, function (err, data) {
+//         console.log(data);
+//         found.dishes.push(data._id);
+//         found.save(function (err) {
+//           if (err) {
+//             console.log(err);
+//           } else {
+//             console.log(found);
+//             res.redirect(`/admin/${req.params.id}`);
+//           }
+//         });
+//       })
+//     }
+//   })
+// })
 
-
-
-
+router.post('/newDish/:id', (req, res, next) => {
+  restaurant.findById(req.params.id, (err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+      dish.create(buildDishModel(data,req), (err, newDish)=> {
+        if(err){
+          console.log(err);
+        }else{
+          data.dishes.push(newDish._id);
+          data.save(err => {
+            if(err){
+              console.log(err);
+            }else{
+              res.redirect(`/admin/${req.params.id}`);
+            }
+          })     
+        }
+      });
+    }
+  });
+});
 
 module.exports = router;
