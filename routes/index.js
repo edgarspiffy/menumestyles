@@ -1,14 +1,22 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const dish = require('../models/dish');
-const spot = require('../models/restaurant');
-const router = express.Router();
-const restaurant = require('../models/restaurant');
+const express       = require('express');
+const dish          = require('../models/dish');
+const restaurant    = require('../models/restaurant');
+const router        = express.Router();
+
+
 
 let foodFilters = ["vegan", "vegetarian", "spicy", "under 10 bucks"];
 let spotFilters = ["hole in the wall", "in happy hour", "serves beer & alcohol"];
 
-router.get('/', function (req, res, next) {
+
+
+
+
+
+
+
+
+router.get('/',(req, res, next) => {
   res.render('index',
     {
       title: 'Discover Something Good',
@@ -20,7 +28,7 @@ router.get('/', function (req, res, next) {
 });
 
 
-router.get('/search', function (req, res, next) {
+router.get('/search', (req, res, next) => {
   let queryArray = Object.keys(req.query);
 
 
@@ -45,7 +53,8 @@ router.get('/search', function (req, res, next) {
     search[key] = true;
   }
   // console.log(search);
-  dish.find(search, function (err, found) {
+  //swap the bottom with search
+  dish.find({}, function (err, found) {
     if (err) {
       console.log(err);
     } else {
@@ -67,10 +76,25 @@ router.get('/search', function (req, res, next) {
 });
 
 
-router.get('/spot/:id', function (req, res, next) {
-  const restaurant = req.params.id
-  res.render('spotInfo', { title: 'Searching', page_id: 'info-page' });
+router.get('/spot/:id',(req, res, next) => {
+  dish.findById(req.params.id)
+    .populate('restaurantID')
+    .exec((err,data)=>{
+      if(err){
+        console.log(err);
+      }else{
+        res.render('spotInfo',
+        {
+          title: 'Searching',
+          page_id: 'info-page',
+          path: req.url,
+          data: data
+        })
+      }
+    })
 });
+
+ 
 
 
 

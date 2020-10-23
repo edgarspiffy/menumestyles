@@ -1,28 +1,23 @@
 <% include ../partials/mainHeader %>
 
-<div class="container pt-3">
 
-
-  <form method="POST" action="/admin/<%= id %>?_method=delete">
-    <button class='btn' style='background-color:red;color:white;'>Delete</button>
-  </form>
-
-  <div class="container edit-form">
+  <div style='background:#ccc' class="container edit-form pt-3">
+    <h3 style='color:black;'>Edit Restaurant Info</h3>
     <form method="POST" action="/admin/<%= id %>?_method=put">
 
       <!-- BASIC INFO -->
       <div class="form-row">
         <div class="form-group col-md-4">
-          <label for="nPMe">name</label>
-          <input class="form-control" value='<%= data.name %>' id='name' nPMe='name' type="text" required>
+          <label for="name">name</label>
+          <input class="form-control" value='<%= data.name %>' id='name' name='name' type="text" required>
         </div>
         <div class="form-group col-md-4">
           <label for="website">website</label>
-          <input class="form-control" value='<%= data.website %>' id='website' nPMe='website' type="text" required>
+          <input class="form-control" value='<%= data.website %>' id='website' name='website' type="text" required>
         </div>
         <div class="form-group col-md-4">
           <label for="phone">phone</label>
-          <input class="form-control" value='<%= data.phone %>' id='phone' nPMe='phone' type="text" required>
+          <input class="form-control" value='<%= data.phone %>' id='phone' name='phone' type="text" required>
         </div>
       </div>
 
@@ -30,16 +25,16 @@
       <div class="form-row">
         <div class="form-group col-md-4">
           <label for="address">address</label>
-          <input class="form-control" value='<%= data.address %>' id='address' nPMe='address' type="text" required>
+          <input class="form-control" value='<%= data.address %>' id='address' name='address' type="text" required>
         </div>
         <div class="form-group col-md-4">
           <label for="city">city</label>
-          <input class="form-control" value='<%= data.city %>' id='city' nPMe='city' value='Oxnard' type="text"
+          <input class="form-control" value='<%= data.city %>' id='city' name='city' value='Oxnard' type="text"
             required>
         </div>
         <div class="form-group col-md-4">
           <label for="zip">zip</label>
-          <input class="form-control" value='<%= data.zip %>' id='zip' nPMe='zip' type="text" required>
+          <input class="form-control" value='<%= data.zip %>' id='zip' name='zip' type="text" required>
         </div>
       </div>
 
@@ -108,36 +103,77 @@
 
 
 
-      <!-- <button class='btn btn-secondary'>UPDATE INFO</button> -->
+      <button style='background-color:yellow;color:black;' class='btn'>UPDATE INFO</button>
 
   </div>
   </form>
 </div>
 
-
-
-
-
-
-</div>
-
-<div class="container pb-5">
-
-  <form method='POST' action="/admin/newDish/<%= id %>">
-    <label class='col-sm-2 col-form-label' for="dishName">Name</label>
-    <div class="col-sm-10">
-      <input id='dishName' name='dishName' type="text" required>
-    </div>
-    <label class='col-sm-2 col-form-label' for="ingredients">ingredients (seperate by comma)</label>
-    <div class="col-12">
-      <input style='width:100%;' id='ingredients' name='ingredients' type="text" required>
-    </div>
-    <label class='col-sm-2 col-form-label' for="price">Price</label>
-    <div class="col-sm-10">
-      <input id='price' name='price' type="number" required>
-    </div>
-    <input type="submit">
+<div style='background:#ccc' class="container pt-3 pb-3">
+  <form method="POST" action="/admin/<%= id %>?_method=delete">
+    <button class='btn' style='background-color:red;color:white;'>Delete</button>
   </form>
 </div>
+
+
+
+
+
+
+<div style='background:lightskyblue' class="container mt-5 pt-3 pb-3">
+  <h3 style='color:black;'>Add A Dish</h3>
+  <form method='POST' action="/admin/newDish/<%= id %>">
+    <div class="form-row">
+      <div class="form-group col-2">
+        <label for="dishName">Name</label>
+        <input class="form-control"  id='dishName' name='dishName' type="text" required>
+      </div>
+
+      <div class="form-group col-6">
+        <label for="ingredients">ingredients (seperate by comma)</label>
+        <input class="form-control"  id='ingredients' name='ingredients' type="text" required>
+      </div>
+
+      <div class="form-group col-2">
+        <label for="price">Price</label>
+        <input class="form-control"  id='price' name='price' type="text" required>
+      </div>
+
+
+      <div class="form-group col-2">
+        <label for="submit">Add New Dish</label>
+          <input style='background:blue;color:white;' class='btn btn-block' id='submit' value='Save' type="submit">
+      </div>
+    </div>
+  </form>
+</div>
+
+
+
+
+
+
+
+<div class="container mb-5">
+  <div class="row">
+    <% data.dishes.forEach(element => { %>
+      <div class="col-3">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title"><%= element.name %></h2>
+            <hr>
+            <h4 class="card-subtitle">Ingredients</h4>
+            <p class="card-text"><%= element.ingredients %>
+            <h4 class="card-subtitle">Price</h4>
+            <p class="card-text"><%= element.price %>
+            <h4 class="card-subtitle">Restaurant Name</h4>
+            <p class="card-text"><%= element.restaurant %>
+          </div>
+        </div>
+      </div>
+    <% }) %>    
+  </div>
+</div>
+
 
 <% include ../partials/mainFooter %>

@@ -28,8 +28,12 @@ function buildRestaurantModel(req){
 function buildDishModel(data,req){
   const doc = {
     name: req.body.dishName,
+    ingredients: [req.body.ingredients],
+    price: req.body.price,
+
+    
     restaurant: data.name,
-    restaurantID: data._id,
+    restaurantID: [data._id],
     hours: {
       mon: data.hours.mon,
       tue: data.hours.tue,
@@ -90,8 +94,8 @@ router.get('/:id', (req, res, next) => {
 });
 
 // DELETE RESTAURANT
-router.delete('/:id', function (req, res) {
-  restaurant.findByIdAndRemove(req.params.id, function (err) {
+router.delete('/:id', (req, res) => {
+  restaurant.findByIdAndRemove(req.params.id, (err) => {
     if (err) {
       console.log(err);
     } else {
@@ -111,34 +115,7 @@ router.put('/:id', (req, res) => {
   });
 });
 
-// CREATE NEW DISH
-// router.post('/:id/newDish', (req, res, next) => {
-//   const name = req.body.dishName;
-//   restaurant.findById(req.params.id, (err, found) => {
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       const doc = {
-//         name: name,
-//         spotName: found.name,
-//         restaurantID: found._id
-//       }
-//       dish.create(doc, function (err, data) {
-//         console.log(data);
-//         found.dishes.push(data._id);
-//         found.save(function (err) {
-//           if (err) {
-//             console.log(err);
-//           } else {
-//             console.log(found);
-//             res.redirect(`/admin/${req.params.id}`);
-//           }
-//         });
-//       })
-//     }
-//   })
-// })
-
+// NEW DISH
 router.post('/newDish/:id', (req, res, next) => {
   restaurant.findById(req.params.id, (err, data) => {
     if (err) {

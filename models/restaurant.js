@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const dish = require('../models/dish');
 
-const spotSchema = new mongoose.Schema({
+const restaurantSchema = new mongoose.Schema({
   name: String,
   phone: String,
   address: String,
@@ -23,4 +23,4 @@ const spotSchema = new mongoose.Schema({
   }]
 });
 
-module.exports = mongoose.model("spot", spotSchema);
+module.exports = mongoose.model("restaurant", restaurantSchema);

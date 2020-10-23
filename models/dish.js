@@ -5,10 +5,10 @@ const dishSchema = new mongoose.Schema({
   name:String,
   restaurant:String,
   ingredients:[String],
+  price:String,
   attributes:{
     vegan:Boolean,
     spicy:Boolean,
-    price:Number
   },
   hours: {
     mon: String,
