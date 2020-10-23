@@ -198,6 +198,17 @@ hr {
     color: #720B0B;
     opacity: 85%; } }
 
+#admin-edit-form label {
+  margin-bottom: 0px !important;
+  font-size: 14px !important; }
+
+#admin-edit-form .form-control[type=text] {
+  font-size: 14px !important; }
+
+#admin-edit-form .form-control {
+  padding: 0px !important;
+  height: auto !important; }
+
 body, html {
   font-family: 'Montserrat', sans-serif; }
 

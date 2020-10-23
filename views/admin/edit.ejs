@@ -1,113 +1,40 @@
 <% include ../partials/mainHeader %>
 
 
-  <div style='background:#ccc' class="container edit-form pt-3">
-    <h3 style='color:black;'>Edit Restaurant Info</h3>
-    <form method="POST" action="/admin/<%= id %>?_method=put">
+<div style='background:#ccc' class="container edit-form pt-3">
 
-      <!-- BASIC INFO -->
-      <div class="form-row">
-        <div class="form-group col-md-4">
-          <label for="name">name</label>
-          <input class="form-control" value='<%= data.name %>' id='name' name='name' type="text" required>
-        </div>
-        <div class="form-group col-md-4">
-          <label for="website">website</label>
-          <input class="form-control" value='<%= data.website %>' id='website' name='website' type="text" required>
-        </div>
-        <div class="form-group col-md-4">
-          <label for="phone">phone</label>
-          <input class="form-control" value='<%= data.phone %>' id='phone' name='phone' type="text" required>
-        </div>
+
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-6" id='admin-edit-form'>
+        <form method="POST" action="/admin/<%= id %>?_method=put">
+          <% include ./forms/spotInfo %>
+        </form>
       </div>
-
-      <!-- ADDRESS -->
-      <div class="form-row">
-        <div class="form-group col-md-4">
-          <label for="address">address</label>
-          <input class="form-control" value='<%= data.address %>' id='address' name='address' type="text" required>
-        </div>
-        <div class="form-group col-md-4">
-          <label for="city">city</label>
-          <input class="form-control" value='<%= data.city %>' id='city' name='city' value='Oxnard' type="text"
-            required>
-        </div>
-        <div class="form-group col-md-4">
-          <label for="zip">zip</label>
-          <input class="form-control" value='<%= data.zip %>' id='zip' name='zip' type="text" required>
-        </div>
-      </div>
-
-
-
-      <!-- <div class="form-row">
-        <label class='col-1 col-form-label' for="mon">Monday</label>
-        <div class="col-2">
-          <select class="form-control" id="exPMpleFormControlSelect2">
-            <% include ./forms/hours %>
-          </select>
-        </div>
-        <div class="col-2">
-          <select class="form-control" id="exPMpleFormControlSelect2">
-            <% include ./forms/hours %>
-          </select>
-        </div>
-        <div class="col-1">
-          <div class="form-check mt-2">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">
-              Closed
-            </label>
-          </div>
-        </div> -->
-
-
-      <!-- HOURS -->
-      <!-- 
-
-        <label class='col-sm-2 col-form-label' for="tue">tue</label>
-        <div class="col-sm-10">
-          <input value='<%= data.hours.tue %>' id='tue' nPMe='tue' type="text" required>
-        </div>
-        <label class='col-sm-2 col-form-label' for="wed">wed</label>
-        <div class="col-sm-10">
-          <input value='<%= data.hours.wed %>' id='wed' nPMe='wed' type="text" required>
-        </div>
-        <label class='col-sm-2 col-form-label' for="thu">thu</label>
-        <div class="col-sm-10">
-          <input value='<%= data.hours.thu %>' id='thu' nPMe='thu' type="text" required>
-        </div>
-        <label class='col-sm-2 col-form-label' for="fri">fri</label>
-        <div class="col-sm-10">
-          <input value='<%= data.hours.fri %>' id='fri' nPMe='fri' type="text" required>
-        </div>
-        <label class='col-sm-2 col-form-label' for="sat">sat</label>
-        <div class="col-sm-10">
-          <input value='<%= data.hours.sat %>' id='sat' nPMe='sat' type="text" required>
-        </div>
-        <label class='col-sm-2 col-form-label' for="sun">sun</label>
-        <div class="col-sm-10">
-          <input value='<%= data.hours.sun %>' id='sun' nPMe='sun' type="text" required>
-        </div> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      <button style='background-color:yellow;color:black;' class='btn'>UPDATE INFO</button>
-
+    </div>
   </div>
-  </form>
+
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <div style='background:#ccc' class="container pt-3 pb-3">
   <form method="POST" action="/admin/<%= id %>?_method=delete">
@@ -126,23 +53,23 @@
     <div class="form-row">
       <div class="form-group col-2">
         <label for="dishName">Name</label>
-        <input class="form-control"  id='dishName' name='dishName' type="text" required>
+        <input class="form-control" id='dishName' name='dishName' type="text" required>
       </div>
 
       <div class="form-group col-6">
         <label for="ingredients">ingredients (seperate by comma)</label>
-        <input class="form-control"  id='ingredients' name='ingredients' type="text" required>
+        <input class="form-control" id='ingredients' name='ingredients' type="text" required>
       </div>
 
       <div class="form-group col-2">
         <label for="price">Price</label>
-        <input class="form-control"  id='price' name='price' type="text" required>
+        <input class="form-control" id='price' name='price' type="text" required>
       </div>
 
 
       <div class="form-group col-2">
         <label for="submit">Add New Dish</label>
-          <input style='background:blue;color:white;' class='btn btn-block' id='submit' value='Save' type="submit">
+        <input style='background:blue;color:white;' class='btn btn-block' id='submit' value='Save' type="submit">
       </div>
     </div>
   </form>
@@ -157,23 +84,24 @@
 <div class="container mb-5">
   <div class="row">
     <% data.dishes.forEach(element => { %>
-      <div class="col-3">
-        <div class="card">
-          <div class="card-body">
-            <h2 class="card-title"><%= element.name %></h2>
-            <hr>
-            <h4 class="card-subtitle">Ingredients</h4>
-            <p class="card-text"><%= element.ingredients %>
-            <h4 class="card-subtitle">Price</h4>
-            <p class="card-text"><%= element.price %>
-            <h4 class="card-subtitle">Restaurant Name</h4>
-            <p class="card-text"><%= element.restaurant %>
-          </div>
+    <div class="col-3">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title"><%= element.name %></h2>
+          <hr>
+          <h4 class="card-subtitle">Ingredients</h4>
+          <p class="card-text"><%= element.ingredients %>
+          <h4 class="card-subtitle">Price</h4>
+          <p class="card-text"><%= element.price %>
+          <h4 class="card-subtitle">Restaurant Name</h4>
+          <p class="card-text"><%= element.restaurant %>
         </div>
       </div>
-    <% }) %>    
+    </div>
+    <% }) %>
   </div>
 </div>
 
+<%= data %>
 
 <% include ../partials/mainFooter %>

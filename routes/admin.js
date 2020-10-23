@@ -3,6 +3,10 @@ const dish = require('../models/dish');
 const restaurant = require('../models/restaurant');
 const router = express.Router();
 
+
+let foodFilters = ["vegan", "vegetarian", "spicy", "under 10 bucks"];
+let spotFilters = ["hole in the wall", "in happy hour", "serves beer & alcohol"];
+
 function buildRestaurantModel(req) {
   const doc = {
     name: req.body.name,
@@ -11,6 +15,11 @@ function buildRestaurantModel(req) {
     city: req.body.city,
     zip: req.body.zip,
     website: req.body.website,
+    attributes: {
+      holeInWall: req.body["hole in the wall"],
+      alcohol: req.body["in happy hour"],
+      happyHour: req.body["serves beer & alcohol"]
+    },
     hours: {
       mon: req.body.mon,
       tue: req.body.tue,
@@ -85,7 +94,9 @@ router.get('/', (req, res, next) => {
         {
           title: 'admin',
           page_id: 'admin-index',
-          data: data
+          path: req.path,
+          data: data,
+          spotFilters: spotFilters
         });
     }
   });

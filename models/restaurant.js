@@ -7,8 +7,13 @@ const restaurantSchema = new mongoose.Schema({
   address: String,
   city: String,
   zip: String,
-  website:String,
-  hours:{
+  website: String,
+  attributes: {
+    holeInWall: Boolean,
+    alcohol: Boolean,
+    happyHour: Boolean
+  },
+  hours: {
     mon: String,
     tue: String,
     wed: String,
@@ -17,9 +22,9 @@ const restaurantSchema = new mongoose.Schema({
     sat: String,
     sun: String
   },
-  dishes:[{
-      type: mongoose.Schema.Types.ObjectId, 
-      ref: 'dish' 
+  dishes: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'dish'
   }]
 });
 

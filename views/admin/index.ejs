@@ -2,12 +2,57 @@
 
 
 <div class="container pt-5 pb-3 ml-auto">
-  <button id='addNew'>Add New Location</button>
+  <button id='addNew' class='btn btn-secondary'>Add New Location</button>
 </div>
 
 <div class="container adding-form">
   <form action="/admin" method='POST'>
-    <div class="form-group row">
+
+    <!-- BASIC INFO -->
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="name">name</label>
+        <input class="form-control" value='<%= data.name %>' id='name' name='name' type="text" required>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="website">website</label>
+        <input class="form-control" value='<%= data.website %>' id='website' name='website' type="text" required>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="phone">phone</label>
+        <input class="form-control" value='<%= data.phone %>' id='phone' name='phone' type="text" required>
+      </div>
+    </div>
+
+    <!-- ADDRESS -->
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="address">address</label>
+        <input class="form-control" value='<%= data.address %>' id='address' name='address' type="text" required>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="city">city</label>
+        <input class="form-control" value='<%= data.city %>' id='city' name='city' value='Oxnard' type="text" required>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="zip">zip</label>
+        <input class="form-control" value='<%= data.zip %>' id='zip' name='zip' type="text" required>
+      </div>
+    </div>
+
+    <!-- ATTRIBUTES -->
+    <div class="container">
+      <div class="form-row">
+        <% spotFilters.forEach(filter => { %>
+        <div class="form-check form-group col-md-3">
+          <input value="true" name="<%= filter %>" type="checkbox" class="form-check-input" id="<%= filter %>">
+          <label class="form-check-label" for="<%= filter %>"><%= filter %></label>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+
+    <!-- <div class="form-group row">
       <label class='col-sm-2 col-form-label' for="name">name</label>
       <div class="col-sm-10">
         <input id='name' name='name' type="text" required>
@@ -31,13 +76,13 @@
       <label class='col-sm-2 col-form-label' for="zip">zip</label>
       <div class="col-sm-10">
         <input id='zip' name='zip' type="text" required>
-      </div>
-      <label class='col-sm-2 col-form-label' for="mon">mon</label>
-      <div class="col-sm-10">
-        <input id='mon' name='mon' type="text" required>
-        <a href='#' id='duplicate-hours' class='btn btn-secondary'>Apply to All</a>
-      </div>
-      <label class='col-sm-2 col-form-label' for="tue">tue</label>
+      </div> -->
+    <!-- <label class='col-sm-2 col-form-label' for="mon">mon</label> -->
+    <div class="col-sm-10">
+      <!-- <input id='mon' name='mon' type="text" disabled> -->
+      <a href='#' id='duplicate-hours' class='d-none btn btn-secondary'>Apply to All</a>
+    </div>
+    <!-- <label class='col-sm-2 col-form-label' for="tue">tue</label>
       <div class="col-sm-10">
         <input id='tue' name='tue' type="text" required>
       </div>
@@ -60,26 +105,21 @@
       <label class='col-sm-2 col-form-label' for="sun">sun</label>
       <div class="col-sm-10">
         <input id='sun' name='sun' type="text" required>
-      </div>
-      <button class='btn btn-secondary'>Submit</button>
-
+      </div> -->
+    <div class="container pt-3">
+      <button class='btn btn-secondary d-block'>Submit</button>
     </div>
-  </form>
+</div>
+</form>
 </div>
 
 <div class="container ">
   <ol>
     <% data.forEach(restaurant => { %>
-    <li><a href="admin/<%= restaurant._id %> "><%= restaurant.name %></a></li>
+    <li><a href="admin/<%= restaurant._id %>"><%= restaurant.name %></a></li>
     <% }) %>
   </ol>
 </div>
-
-<form method="POST" action="/admin/edit?_method=put">
-  <button>Submit</button>
-</form>
-
-
 
 
 
