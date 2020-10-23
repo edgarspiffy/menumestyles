@@ -1,15 +1,15 @@
-const express      = require('express');
-const dish         = require('../models/dish');
-const restaurant   = require('../models/restaurant');
-const router       = express.Router();
+const express = require('express');
+const dish = require('../models/dish');
+const restaurant = require('../models/restaurant');
+const router = express.Router();
 
-function buildRestaurantModel(req){
+function buildRestaurantModel(req) {
   const doc = {
-    name:    req.body.name,
-    phone:   req.body.phone,
+    name: req.body.name,
+    phone: req.body.phone,
     address: req.body.address,
-    city:    req.body.city,
-    zip:     req.body.zip,
+    city: req.body.city,
+    zip: req.body.zip,
     website: req.body.website,
     hours: {
       mon: req.body.mon,
@@ -25,13 +25,13 @@ function buildRestaurantModel(req){
 }
 
 
-function buildDishModel(data,req){
+function buildDishModel(data, req) {
   const doc = {
     name: req.body.dishName,
     ingredients: [req.body.ingredients],
     price: req.body.price,
 
-    
+
     restaurant: data.name,
     restaurantID: [data._id],
     hours: {
@@ -47,18 +47,46 @@ function buildDishModel(data,req){
   return doc;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // INDEX
-router.get('/', (req,res,next)=>{
-  restaurant.find({},(err,data)=>{
-    if(err){
+router.get('/', (req, res, next) => {
+  restaurant.find({}, (err, data) => {
+    if (err) {
       console.log(err);
-    }else{
+    } else {
       res.render('admin/index',
-      {
-        title:    'admin',
-        page_id:  'admin-index',
-        data:      data
-      });
+        {
+          title: 'admin',
+          page_id: 'admin-index',
+          data: data
+        });
     }
   });
 });
@@ -78,19 +106,19 @@ router.post('/', (req, res, next) => {
 router.get('/:id', (req, res, next) => {
   restaurant.findById(req.params.id)
     .populate('dishes')
-    .exec((err, found)=>{
-    if (err) {
-      console.log(err);
-    } else {
-      res.render('admin/edit', 
-      {
-        title:   'Searching',
-        data:     found,
-        page_id: 'info-page',
-        id:       req.params.id
-      });
-    }
-  });
+    .exec((err, found) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.render('admin/edit',
+          {
+            title: 'Searching',
+            data: found,
+            page_id: 'info-page',
+            id: req.params.id
+          });
+      }
+    });
 });
 
 // DELETE RESTAURANT
@@ -104,12 +132,23 @@ router.delete('/:id', (req, res) => {
   });
 });
 
-// UPDATE RESTAURANT
+// UPDATE RESTAURANT & BULK DISHES
 router.put('/:id', (req, res) => {
   restaurant.findByIdAndUpdate(req.params.id, buildRestaurantModel(req), err => {
     if (err) {
       console.log(err);
     } else {
+      dish.updateMany(
+        { restaurantID: req.params.id },
+        {
+          $set: {
+            restaurant: req.body.name,
+            hours: {
+              mon: "10pm"
+            }
+          }
+        })
+        .exec();
       res.redirect(`/admin/${req.params.id}`);
     }
   });
@@ -121,18 +160,18 @@ router.post('/newDish/:id', (req, res, next) => {
     if (err) {
       console.log(err);
     } else {
-      dish.create(buildDishModel(data,req), (err, newDish)=> {
-        if(err){
+      dish.create(buildDishModel(data, req), (err, newDish) => {
+        if (err) {
           console.log(err);
-        }else{
+        } else {
           data.dishes.push(newDish._id);
           data.save(err => {
-            if(err){
+            if (err) {
               console.log(err);
-            }else{
+            } else {
               res.redirect(`/admin/${req.params.id}`);
             }
-          })     
+          })
         }
       });
     }
