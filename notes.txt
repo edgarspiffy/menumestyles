@@ -1,23 +1,6 @@
-Major Missing Components
-
-I figured out how to update the search
-actual ranking factor will most likely be from teh ejs file
-
-
-
-Create and Update DB
-DB Goal:
-Add Hours to a collection and upadte all reference collections
-
-THINGS TO TACKLE
-DB
-1. How to update Location update and have changes propogate to reference data
-updateMany(id,set to reflect new var)
-
-ID:5f6c0f1d3ac9ff9f1e3a09c0
-
 SEARCH LOWER CAP NEEDS TO SEARCH LOWER CAPS
 
+//HOW TO FORCE MONGO BUT NOT REALLY NEEDED ANNYMORE.
 
 load("/Users/admin/Desktop/jstestfile.js")
 db.dishes.find({"restaurantID":"5f6c0f1d3ac9ff9f1e3a09c0"}).pretty()
@@ -29,28 +12,6 @@ db.dishes.updateMany(
 
 
 
-2. ability to customize query search to include parameters (node)
-
-
-
-
-3. Add return sort
-
-Style
-1. Update filter look on mobile
-2. add filters to home propogate
-
-App Structure:
-Include clickable link to restaurant info. 
-
-
-
-restaurant link attribute
-
-if no resutls found
-do this.
-
-center align text
 <!-- DONT DELETE -->
 <!-- <div class="position-relative">
   <div id='mobile-filters' class="my-bg-primary">
@@ -68,3 +29,23 @@ center align text
     </div>
   </div>
 </div> -->
+
+
+TO TACKLE
+FORM INPUTS AND DATA:
+1. string to array, remove before and after white space
+2. Number formatting
+3. Price formatting
+4. hours (Do this later once I figure out display info on ejs)
+
+
+DB:
+1. Delete Dish
+2. Udpate Dish
+
+Design: 
+1.Search Function
+
+TECH:
+Independent Varaibles .env
+USER AUTH:

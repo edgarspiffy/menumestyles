@@ -1,21 +1,25 @@
 const express = require('express');
 const dish = require('../models/dish');
 const restaurant = require('../models/restaurant');
+const attributes = require('../attributes');
+
 const router = express.Router();
 
 
-let foodFilters = ["vegan", "vegetarian", "spicy", "under 10 bucks"];
-let spotFilters = ["hole in the wall", "in happy hour", "serves beer & alcohol"];
-
 function buildRestaurantModel(req) {
   const doc = {
-    name: req.body.name,
-    phone: req.body.phone,
-    address: req.body.address,
-    city: req.body.city,
-    zip: req.body.zip,
-    website: req.body.website,
-    attributes: {
+    restaurantInfo: {
+      name: req.body.name,
+      phone: req.body.phone,
+      website: req.body.website
+    },
+    restaurantAddress: {
+      street: req.body.street,
+      city: req.body.city,
+      zip: req.body.zip,
+      state: "CA",
+    },
+    restaurantAttributes: {
       holeInWall: req.body["hole in the wall"],
       alcohol: req.body["in happy hour"],
       happyHour: req.body["serves beer & alcohol"]
@@ -35,56 +39,57 @@ function buildRestaurantModel(req) {
 
 
 function buildDishModel(data, req) {
+  // Make Ingridients into array
+  let ingredients = req.body.ingredients;
+  ingredients = ingredients.replace(/\s*,\s*/g, ",");
+  ingredients = ingredients.split(",");
+
+  // BUILD DOC
   const doc = {
-    name: req.body.dishName,
-    ingredients: [req.body.ingredients],
-    price: req.body.price,
-
-
-    restaurant: data.name,
-    restaurantID: [data._id],
-    hours: {
-      mon: data.hours.mon,
-      tue: data.hours.tue,
-      wed: data.hours.wed,
-      thu: data.hours.thu,
-      fri: data.hours.fri,
-      sat: data.hours.sat,
-      sun: data.hours.sun,
+    // UNIQUE DATA
+    dishInfo: {
+      name: req.body.dishName,
+      ingredients: ingredients,
+      price: req.body.price,
     },
+    dishAttributes: {
+      vegan: true,
+      vegetarian: true,
+      spicy: true
+    },
+  // PULLED DATA
+    restaurantInfo: {
+      name: data.restaurantInfo.name,
+      phone: data.restaurantInfo.phone,
+      website: data.restaurantInfo.website
+    },
+    restaurantAddress: {
+      street: data.restaurantAddress.street,
+      city: data.restaurantAddress.city,
+      zip: data.restaurantAddress.zip,
+      state: "CA",
+    },
+    restaurantAttributes: {
+      holeInWall: data.restaurantAttributes["hole in the wall"],
+      alcohol: data.restaurantAttributes["in happy hour"],
+      happyHour: data.restaurantAttributes["serves beer & alcohol"]
+    },
+    hours: {
+      // mon: data.hours.mon,
+      // tue: data.hours.tue,
+      // wed: data.hours.wed,
+      // thu: data.hours.thu,
+      // fri: data.hours.fri,
+      // sat: data.hours.sat,
+      // sun: data.hours.sun
+    },
+    restaurantID: [data._id],
   }
   return doc;
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// INDEX
+// GET ALL RESTAURANTS
 router.get('/', (req, res, next) => {
   restaurant.find({}, (err, data) => {
     if (err) {
@@ -96,11 +101,13 @@ router.get('/', (req, res, next) => {
           page_id: 'admin-index',
           path: req.path,
           data: data,
-          spotFilters: spotFilters
+          spotFilters: attributes.spotFilters
         });
     }
   });
 });
+
+
 
 // CREATE NEW RESTAURANT
 router.post('/', (req, res, next) => {
@@ -117,16 +124,18 @@ router.post('/', (req, res, next) => {
 router.get('/:id', (req, res, next) => {
   restaurant.findById(req.params.id)
     .populate('dishes')
-    .exec((err, found) => {
+    .exec((err, data) => {
       if (err) {
         console.log(err);
       } else {
         res.render('admin/edit',
           {
             title: 'Searching',
-            data: found,
+            data: data,
+            path: req.path,
             page_id: 'info-page',
-            id: req.params.id
+            id: req.params.id,
+            spotFilters: attributes.spotFilters
           });
       }
     });
@@ -138,7 +147,13 @@ router.delete('/:id', (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      res.redirect('/admin');
+      dish.deleteMany({ restaurantID: req.params.id }, (err) =>{
+        if(err){
+          console.log(err);
+        }else{
+          res.redirect('/admin');
+        }
+      });
     }
   });
 });
@@ -153,9 +168,9 @@ router.put('/:id', (req, res) => {
         { restaurantID: req.params.id },
         {
           $set: {
-            restaurant: req.body.name,
-            hours: {
-              mon: "10pm"
+            // THIS UPDATES THE DATA NEED TO ADD ALL FIELDS
+            restaurantInfo:{
+              name: req.body.name
             }
           }
         })

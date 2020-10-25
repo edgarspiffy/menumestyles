@@ -2,15 +2,30 @@ const mongoose = require('mongoose');
 const restaurant = require('../models/restaurant');
 
 const dishSchema = new mongoose.Schema({
-  name:String,
-  restaurant:String,
-  ingredients:[String],
-  price:String,
-  attributes:{
-    vegan:Boolean,
-    spicy:Boolean,
+  // UNIQUE DATA
+  dishInfo:{
+    name: String,
+    ingredients: [String],
+    price: String,
   },
-  hours: {
+  dishAttributes:{
+    vegan:Boolean,
+    vegetarian:Boolean,
+    spicy:Boolean
+  },
+  // PULLED DATA
+  restaurantInfo:{
+    name:String,
+    phone:String,
+    website:String
+  },
+  restaurantAddress:{
+    street:String,
+    city:String,
+    zip:String,
+    state:String,
+  },
+  restaurantHours:{
     mon: String,
     tue: String,
     wed: String,
@@ -18,6 +33,10 @@ const dishSchema = new mongoose.Schema({
     fri: String,
     sat: String,
     sun: String
+  },
+  restaurantAttributes:{
+    vegan: Boolean,
+    spicy: Boolean,
   },
   restaurantID: [{
     type: mongoose.Schema.Types.ObjectId,

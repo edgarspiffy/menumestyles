@@ -2,18 +2,18 @@ const mongoose = require('mongoose');
 const dish = require('../models/dish');
 
 const restaurantSchema = new mongoose.Schema({
-  name: String,
-  phone: String,
-  address: String,
-  city: String,
-  zip: String,
-  website: String,
-  attributes: {
-    holeInWall: Boolean,
-    alcohol: Boolean,
-    happyHour: Boolean
+  restaurantInfo: {
+    name: String,
+    phone: String,
+    website: String
   },
-  hours: {
+  restaurantAddress: {
+    street: String,
+    city: String,
+    zip: String,
+    state: String,
+  },
+  restaurantHours: {
     mon: String,
     tue: String,
     wed: String,
@@ -21,6 +21,11 @@ const restaurantSchema = new mongoose.Schema({
     fri: String,
     sat: String,
     sun: String
+  },
+  restaurantAttributes: {
+    holeInWall: Boolean,
+    alcohol: Boolean,
+    happyHour: Boolean
   },
   dishes: [{
     type: mongoose.Schema.Types.ObjectId,

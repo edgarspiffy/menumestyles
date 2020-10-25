@@ -2,12 +2,7 @@ const express       = require('express');
 const dish          = require('../models/dish');
 const restaurant    = require('../models/restaurant');
 const router        = express.Router();
-
-
-
-let foodFilters = ["vegan", "vegetarian", "spicy", "under 10 bucks"];
-let spotFilters = ["hole in the wall", "in happy hour", "serves beer & alcohol"];
-
+const attributes    = require('../attributes');
 
 
 
@@ -22,8 +17,8 @@ router.get('/',(req, res, next) => {
       title: 'Discover Something Good',
       page_id: 'home-page',
       path: req.url,
-      foodFilters: foodFilters,
-      spotFilters: spotFilters
+      foodFilters: attributes.foodFilters,
+      spotFilters: attributes.spotFilters
     });
 });
 
@@ -68,8 +63,8 @@ router.get('/search', (req, res, next) => {
         spicy: spicy,
         vegetarian: vegetarian,
         path: req.url,
-        foodFilters: foodFilters,
-        spotFilters: spotFilters
+        foodFilters: attributes.foodFilters,
+        spotFilters: attributes.spotFilters
       });
     }
   })
