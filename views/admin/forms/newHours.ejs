@@ -1,0 +1,29 @@
+<% let hours, minutes, ampm; %>
+<% for( let index = 0; index < 1440; index += 15 ) { %>
+<% hours = Math.floor(index / 60); %>
+<% minutes = index % 60; %>
+<% ampm = hours % 24 < 12 ? 'AM' : 'PM'; %>
+<% value = `${hours}.${minutes}` %>
+
+
+<% hours = hours % 12; %>
+<% if (hours === 0) { %>
+<% hours = 12; %>
+<% } %>
+<% if (minutes < 10) { %>
+<% minutes = '0' + minutes; %>
+<% } %>
+
+
+<% displayTime = `${hours}:${minutes} - ${ampm}` %>
+
+
+
+<option value="<%= value %>"><%= displayTime %> </option>
+
+
+
+
+
+
+<% } %>

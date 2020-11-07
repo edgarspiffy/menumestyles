@@ -24,14 +24,14 @@ function buildRestaurantModel(req) {
       alcohol: req.body["in happy hour"],
       happyHour: req.body["serves beer & alcohol"]
     },
-    hours: {
-      mon: req.body.mon,
-      tue: req.body.tue,
-      wed: req.body.wed,
-      thu: req.body.thu,
-      fri: req.body.fri,
-      sat: req.body.sat,
-      sun: req.body.sun
+    restaurantHours: {
+      mon: [req.body.openMonday, req.body.closeMonday],
+      tue: [req.body.openTuesday, req.body.closeTuesday],
+      wed: [req.body.openWednesday, req.body.closeWednesday],
+      thu: [req.body.openThursday, req.body.closeThursday],
+      fri: [req.body.openFriday, req.body.closeFriday],
+      sat: [req.body.openSaturday, req.body.closeSaturday],
+      sun: [req.body.openSunday, req.body.closeSunday]
     }
   };
   return doc;
@@ -57,7 +57,7 @@ function buildDishModel(data, req) {
       vegetarian: true,
       spicy: true
     },
-  // PULLED DATA
+    // PULLED DATA
     restaurantInfo: {
       name: data.restaurantInfo.name,
       phone: data.restaurantInfo.phone,
@@ -74,14 +74,14 @@ function buildDishModel(data, req) {
       alcohol: data.restaurantAttributes["in happy hour"],
       happyHour: data.restaurantAttributes["serves beer & alcohol"]
     },
-    hours: {
-      // mon: data.hours.mon,
-      // tue: data.hours.tue,
-      // wed: data.hours.wed,
-      // thu: data.hours.thu,
-      // fri: data.hours.fri,
-      // sat: data.hours.sat,
-      // sun: data.hours.sun
+    restaurantHours: {
+      mon: [data.hours.openMonday, data.hours.closeMonday],
+      tue: [data.hours.openTuesday, data.hours.closeTuesday],
+      wed: [data.hours.openWednesday, data.hours.closeWednesday],
+      thu: [data.hours.openThursday, data.hours.closeThursday],
+      fri: [data.hours.openFriday, data.hours.closeFriday],
+      sat: [data.hours.openSaturday, data.hours.closeSaturday],
+      sun: [data.hours.openSunday, data.hours.closeSunday]
     },
     restaurantID: [data._id],
   }
@@ -147,10 +147,10 @@ router.delete('/:id', (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      dish.deleteMany({ restaurantID: req.params.id }, (err) =>{
-        if(err){
+      dish.deleteMany({ restaurantID: req.params.id }, (err) => {
+        if (err) {
           console.log(err);
-        }else{
+        } else {
           res.redirect('/admin');
         }
       });
@@ -169,7 +169,7 @@ router.put('/:id', (req, res) => {
         {
           $set: {
             // THIS UPDATES THE DATA NEED TO ADD ALL FIELDS
-            restaurantInfo:{
+            restaurantInfo: {
               name: req.body.name
             }
           }

@@ -1,19 +1,8 @@
-const desktopFilters = document.querySelector('#desktopFilters');
-const cardHolder = document.querySelector('#cardHolder');
-const attributes = document.querySelectorAll('.dish-attributes');
-const addNew = document.querySelector('#addNew');
-// const hoursButton = document.querySelector('#duplicate-hours');
+// const desktopFilters = document.querySelector('#desktopFilters');
+// const cardHolder = document.querySelector('#cardHolder');
+// const attributes = document.querySelectorAll('.dish-attributes');
+// const addNew = document.querySelector('#addNew');
 
-
-
-loadEventListener();
-function loadEventListener() {
-  addNew.addEventListener('click', displayForm);
-
-  // hoursButton.addEventListener('click', duplicateHours);
-
-
-};
 
 
 
@@ -33,28 +22,39 @@ function displayForm(e) {
   e.preventDefault();
 }
 
-// function duplicateHours(e) {
-//   let mon = document.querySelector('#mon').value;
-//   let tue = document.querySelector('#tue');
-//   let wed = document.querySelector('#wed');
-//   let thu = document.querySelector('#thu');
-//   let fri = document.querySelector('#fri');
-//   let sat = document.querySelector('#sat');
-//   let sun = document.querySelector('#sun');
+function duplicateHours() {
 
-//   tue.value = mon;
-//   wed.value = mon;
-//   thu.value = mon;
-//   fri.value = mon;
-//   sat.value = mon;
-//   sun.value = mon;
+  let openMon = document.querySelector('#open-Monday').value;
+  let closeMon = document.querySelector('#close-Monday').value;
 
-//   e.preventDefault;
-// }
+  let openTue = document.querySelector('#open-Tuesday');
+  let openWed = document.querySelector('#open-Wednesday');
+  let openThu = document.querySelector('#open-Thursday');
+  let openFri = document.querySelector('#open-Friday');
+  let openSat = document.querySelector('#open-Saturday');
+  let openSun = document.querySelector('#open-Sunday');
 
+  let closeTue = document.querySelector('#close-Tuesday');
+  let closeWed = document.querySelector('#close-Wednesday');
+  let closeThu = document.querySelector('#close-Thursday');
+  let closeFri = document.querySelector('#close-Friday');
+  let closeSat = document.querySelector('#close-Saturday');
+  let closeSun = document.querySelector('#close-Sunday');
 
+  openTue.value = openMon;
+  openWed.value = openMon;
+  openThu.value = openMon;
+  openFri.value = openMon;
+  openSat.value = openMon;
+  openSun.value = openMon;
 
-
+  closeTue.value = closeMon;
+  closeWed.value = closeMon;
+  closeThu.value = closeMon;
+  closeFri.value = closeMon;
+  closeSat.value = closeMon;
+  closeSun.value = closeMon;
+}
 
 
 

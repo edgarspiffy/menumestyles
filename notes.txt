@@ -35,7 +35,7 @@ TO TACKLE
 FORM INPUTS AND DATA:
 1. string to array, remove before and after white space
 2. Number formatting
-3. Price formatting
+3. Price formatting (come back to this)
 4. hours (Do this later once I figure out display info on ejs)
 
 

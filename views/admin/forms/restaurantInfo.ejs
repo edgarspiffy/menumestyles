@@ -1,68 +1,49 @@
-
 <!-- BASIC INFO -->
+
 <div class="form-row">
 
 
-  <div class="form-group col-md-4">
+  <div class="form-group col-lg-4">
     <label for="name">name</label>
-    <input class="form-control" id='name' name='name' type="text" required
-     <% if (path !== "/") { %>
-       value="<%= data.restaurantInfo.name %>"
-     <% } %> 
-    >
+    <input class="form-control" id='name' name='name' type="text" required <% if (path !== "/") { %>
+      value="<%= data.restaurantInfo.name %>" <% } %>>
   </div>
 
 
-  <div class="form-group col-md-4">
+  <div class="form-group col-lg-4">
     <label for="website">website</label>
-    <input class="form-control" id='website' name='website' type="text" required
-         <% if (path !== "/") { %>
-       value="<%= data.restaurantInfo.website %>"
-     <% } %> 
-    >
+    <input class="form-control" id='website' name='website' type="text" required <% if (path !== "/") { %>
+      value="<%= data.restaurantInfo.website %>" <% } %>>
   </div>
 
 
-  <div class="form-group col-md-4">
+  <div class="form-group col-lg-4">
     <label for="phone">phone</label>
-    <input class="form-control" id='phone' name='phone' type="text" required
-         <% if (path !== "/") { %>
-       value="<%= data.restaurantInfo.phone %>"
-     <% } %> 
-     >
+    <input class="form-control" id='phone' name='phone' type="tel" required <% if (path !== "/") { %>
+      value="<%= data.restaurantInfo.phone %>" <% } %>>
   </div>
-
-
-
 
 
 </div>
 
+
+
 <!-- ADDRESS -->
 <div class="form-row">
-  <div class="form-group col-md-4">
+  <div class="form-group col-lg-4">
     <label for="street">address</label>
-    <input class="form-control" id='street' name='street' type="text" required
-         <% if (path !== "/") { %>
-       value="<%= data.restaurantAddress.street %>"
-     <% } %> 
-    >
+    <input class="form-control" id='street' name='street' type="text" required <% if (path !== "/") { %>
+      value="<%= data.restaurantAddress.street %>" <% } %>>
   </div>
-  <div class="form-group col-md-4">
+  <div class="form-group col-lg-4">
     <label for="city">city</label>
     <input class="form-control" value='Oxnard' id='city' name='city' value='Oxnard' type="text" required
-         <% if (path !== "/") { %>
-       value="<%= data.restaurantAddress.city %>"
-     <% } %> 
-    >
+      <% if (path !== "/") { %> value="<%= data.restaurantAddress.city %>" <% } %>>
   </div>
-  <div class="form-group col-md-4">
+  <div class="form-group col-lg-4">
     <label for="zip">zip</label>
-    <input class="form-control" id='zip' name='zip' type="text" required
-         <% if (path !== "/") { %>
-       value="<%= data.restaurantAddress.zip %>"
-     <% } %> 
-    >
+    <input class="form-control" id='zip' name='zip' type="text" required <% if (path !== "/") { %>
+      value="<%= data.restaurantAddress.zip %>" <% } %>>
   </div>
 </div>
 
@@ -77,3 +58,51 @@
     <% }) %>
   </div>
 </div>
+
+
+<!-- HOURS -->
+<% const week = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'] %>
+
+
+<% week.forEach(day => { %>
+<hr>
+<div class="form-row">
+
+  <label class='col-2 col-form-label' for="<%= day %>">
+    <%= day %>
+  </label>
+
+  <div class="col-2">
+    <select class="form-control" name="open<%= day %>" id="open-<%= day %>">
+      <option>Open 24 Hours</option>
+      <% include ./formHours %>
+    </select>
+  </div>
+
+  <div class="col-2">
+    <select class="form-control" name="close<%= day %>" id="close-<%= day %>">
+      <!-- <% include ./formHours %> -->
+      <% include ./newHours %>
+    </select>
+  </div>
+
+  <div class="col-2">
+    <div class="form-check mt-2">
+      <input class="form-check-input" type="checkbox" value="Closed" id="<%= day %>">
+      <label class="form-check-label" for="<%= day %>">
+        Closed
+      </label>
+    </div>
+  </div>
+
+  <% if (day == 'Monday') { %>
+  <div class="col-2">
+    <p onclick="duplicateHours()" class='btn btn-secondary mb-0'>Duplicate</p>
+  </div>
+  <% } %>
+
+
+
+</div>
+
+<% }) %>

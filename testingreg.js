@@ -1,17 +1,17 @@
-let str = "taco, steak, onions, pico de gallo  , red beans "
-str = str.replace(/\s*,\s*/g, ",");
-str = str.split(',');
-str
+const doc = {
+  name: "edgar",
+  time: [3, 23]
+}
+var d = new Date();
+var n = d.getHours();
+var m = d.getMinutes();
 
-console.log(str);
-// // let newStr = str.split(",");
+console.log(m);
 
+console.log(doc.time[0]);
 
-
-//  let newnewStr = str.replace(/\s*,\s*/g, ",");
-
-
-
-
-
-// console.log(newnewStr);
+if (doc.time[0] < n && n < doc.time[1]) {
+  console.log('open');
+} else {
+  console.log('closed');
+}
