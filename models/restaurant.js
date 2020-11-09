@@ -14,13 +14,13 @@ const restaurantSchema = new mongoose.Schema({
     state: String,
   },
   restaurantHours: {
-    mon: [Number],
-    tue: [Number],
-    wed: [Number],
-    thu: [Number],
-    fri: [Number],
-    sat: [Number],
-    sun: [Number]
+    mon: [String],
+    tue: [String],
+    wed: [String],
+    thu: [String],
+    fri: [String],
+    sat: [String],
+    sun: [String]
   },
   restaurantAttributes: {
     holeInWall: Boolean,

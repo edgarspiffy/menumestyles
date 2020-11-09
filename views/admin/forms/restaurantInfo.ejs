@@ -72,18 +72,21 @@
     <%= day %>
   </label>
 
+<% const hours = ['open','close'] %> 
+
+<% hours.forEach(hour => { %>
   <div class="col-2">
-    <select class="form-control" name="open<%= day %>" id="open<%= day %>">
-      <option>Open 24 Hours</option>
+    <select class="form-control" name="<%= hour %><%= day %>" id="<%= hour %><%= day %>">
+      <% if (hour === 'open') { %>
+            <option>Open 24 Hours</option>
+      <% } %>
       <% include ./formHours %>
     </select>
   </div>
+  
+<% }) %>
 
-  <div class="col-2">
-    <select class="form-control" name="close<%= day %>" id="close<%= day %>">
-    <% include ./formHours %>
-    </select>
-  </div>
+
 
   <div class="col-2">
     <div class="form-check mt-2">

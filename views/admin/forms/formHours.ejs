@@ -20,26 +20,20 @@
 
 
 <% if (path !== "/" ) { %>
-  <% day = day.toLowerCase(); %>
-  <% let dayStr = day.slice(0,3); %>
-  <% let selected = data.restaurantHours[dayStr][1] %>
+  <% newDay = day.toLowerCase(); %>
+  <% let dayStr = newDay.slice(0,3); %>
+  <% let index; %> 
+<% if (hour === "open") { %>
+  <% index = 0; %> 
+<% } %> 
+<% if (hour === "close") { %>
+  <% index = 1; %>
+<% } %>
+  <% let selected = data.restaurantHours[dayStr][index] %>
   <option <% if (selected == value) { %> selected <% } %> value="<%= value %>"><%= displayTime %></option>
 <% }else{ %>
   <option value="<%= value %>"><%= displayTime %></option>
 <% } %> 
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
