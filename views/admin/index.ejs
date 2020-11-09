@@ -24,7 +24,7 @@
 <div class="container pt-3">
   <ol>
     <% data.forEach(restaurant => { %>
-    <li><a href="admin/<%= restaurant._id %>"><%= restaurant.restaurantInfo.name %></a></li>
+    <li><a href="/admin/<%= restaurant._id %>"><%= restaurant.restaurantInfo.name %></a></li>
     <% }) %>
   </ol>
 </div>
