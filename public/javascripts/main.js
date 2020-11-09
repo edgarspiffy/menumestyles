@@ -24,22 +24,22 @@ function displayForm(e) {
 
 function duplicateHours() {
 
-  let openMon = document.querySelector('#open-Monday').value;
-  let closeMon = document.querySelector('#close-Monday').value;
+  let openMon = document.querySelector('#openMonday').value;
+  let closeMon = document.querySelector('#closeMonday').value;
 
-  let openTue = document.querySelector('#open-Tuesday');
-  let openWed = document.querySelector('#open-Wednesday');
-  let openThu = document.querySelector('#open-Thursday');
-  let openFri = document.querySelector('#open-Friday');
-  let openSat = document.querySelector('#open-Saturday');
-  let openSun = document.querySelector('#open-Sunday');
+  let openTue = document.querySelector('#openTuesday');
+  let openWed = document.querySelector('#openWednesday');
+  let openThu = document.querySelector('#openThursday');
+  let openFri = document.querySelector('#openFriday');
+  let openSat = document.querySelector('#openSaturday');
+  let openSun = document.querySelector('#openSunday');
 
-  let closeTue = document.querySelector('#close-Tuesday');
-  let closeWed = document.querySelector('#close-Wednesday');
-  let closeThu = document.querySelector('#close-Thursday');
-  let closeFri = document.querySelector('#close-Friday');
-  let closeSat = document.querySelector('#close-Saturday');
-  let closeSun = document.querySelector('#close-Sunday');
+  let closeTue = document.querySelector('#closeTuesday');
+  let closeWed = document.querySelector('#closeWednesday');
+  let closeThu = document.querySelector('#closeThursday');
+  let closeFri = document.querySelector('#closeFriday');
+  let closeSat = document.querySelector('#closeSaturday');
+  let closeSun = document.querySelector('#closeSunday');
 
   openTue.value = openMon;
   openWed.value = openMon;

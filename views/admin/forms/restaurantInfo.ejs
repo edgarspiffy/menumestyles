@@ -73,16 +73,15 @@
   </label>
 
   <div class="col-2">
-    <select class="form-control" name="open<%= day %>" id="open-<%= day %>">
+    <select class="form-control" name="open<%= day %>" id="open<%= day %>">
       <option>Open 24 Hours</option>
       <% include ./formHours %>
     </select>
   </div>
 
   <div class="col-2">
-    <select class="form-control" name="close<%= day %>" id="close-<%= day %>">
-      <!-- <% include ./formHours %> -->
-      <% include ./newHours %>
+    <select class="form-control" name="close<%= day %>" id="close<%= day %>">
+    <% include ./formHours %>
     </select>
   </div>
 

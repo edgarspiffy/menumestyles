@@ -1,7 +1,10 @@
 <% include ../partials/mainHeader %>
 
+
+<%= data %> 
+
 <!-- ADD FORM -->
-<div class="container bg-secondary pt-3">
+<div class="container pt-3">
   <div id='admin-edit-form'>
     <form method="POST" action="/admin/<%= id %>?_method=put">
       <% include ./forms/restaurantInfo %>
@@ -11,7 +14,7 @@
 </div>
 
 <!-- DELETE FORM -->
-<div class="container bg-secondary pt-3 pb-3">
+<div class="container pt-3 pb-3">
   <form method="POST" action="/admin/<%= id %>?_method=delete">
     <button class='btn btn-danger'>Delete</button>
   </form>
