@@ -3,8 +3,11 @@
     <div class='position-relative'>
       <input class='search-bar' type="text" placeholder="Craving something with" name='ingredient'
         <% if (path !== "/") { %> value=<%=ingredient%> <% } %> required>
-      <i class="search-bar-icon fas fa-search"></i>
+      <% if (path !== "/") { %>
       <i onclick='openNav()' class="search-bar-slider fas fa-sliders-h"></i>
+      <% } %>
+      <button><i class="search-bar-icon fas fa-search"></i></button>
+
     </div>
   </form>
 </div>
