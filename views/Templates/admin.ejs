@@ -1,5 +1,4 @@
-<% include ../partials/mainHeader %>
-
+<% include ../Sections/header %>
 
 <div class="container pt-5 pb-3">
   <button id='addNew' onclick="displayForm()" class='btn btn-secondary'>Add New Location</button>
@@ -11,7 +10,7 @@
 
 <div class="container adding-form">
   <form action="/admin" method='POST'>
-    <% include ./forms/restaurantInfo %>
+    <% include ../Sections/form-basic-info %>
     <button class='btn btn-secondary d-block'>Submit</button>
   </form>
 </div>
@@ -32,5 +31,4 @@
 
 
 
-
-<% include ../partials/mainFooter %>
+<% include ../Sections/footer %>

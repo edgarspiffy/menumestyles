@@ -1,7 +1,7 @@
 const express = require('express');
 const dish = require('../models/dish');
 const restaurant = require('../models/restaurant');
-const attributes = require('../attributes');
+const attributes = require('../app_modules/attributes');
 
 const router = express.Router();
 
@@ -117,7 +117,7 @@ router.get('/', (req, res, next) => {
     if (err) {
       console.log(err);
     } else {
-      res.render('admin/index',
+      res.render('Templates/admin',
         {
           title: 'admin',
           page_id: 'admin-index',
@@ -137,7 +137,7 @@ router.post('/', (req, res, next) => {
     if (err) {
       console.log(err);
     } else {
-      res.redirect('/admin');
+      res.redirect('Templates/admin');
     }
   });
 });
@@ -150,7 +150,7 @@ router.get('/:id', (req, res, next) => {
       if (err) {
         console.log(err);
       } else {
-        res.render('admin/edit',
+        res.render('Templates/admin-edit',
           {
             title: 'Searching',
             data: data,

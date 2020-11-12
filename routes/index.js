@@ -1,8 +1,8 @@
-const express       = require('express');
-const dish          = require('../models/dish');
-const restaurant    = require('../models/restaurant');
-const router        = express.Router();
-const attributes    = require('../attributes');
+const express = require('express');
+const dish = require('../models/dish');
+const restaurant = require('../models/restaurant');
+const router = express.Router();
+const attributes = require('../app_modules/attributes');
 
 
 
@@ -11,8 +11,8 @@ const attributes    = require('../attributes');
 
 
 
-router.get('/',(req, res, next) => {
-  res.render('index',
+router.get('/', (req, res, next) => {
+  res.render('Templates/index',
     {
       title: 'Discover Something Good',
       page_id: 'home-page',
@@ -53,7 +53,7 @@ router.get('/search', (req, res, next) => {
     if (err) {
       console.log(err);
     } else {
-      res.render('search', {
+      res.render('Templates/results', {
         title: 'Searching',
         page_id: 'search-page',
         data: found,
@@ -71,25 +71,25 @@ router.get('/search', (req, res, next) => {
 });
 
 
-router.get('/spot/:id',(req, res, next) => {
+router.get('/spot/:id', (req, res, next) => {
   dish.findById(req.params.id)
     .populate('restaurantID')
-    .exec((err,data)=>{
-      if(err){
+    .exec((err, data) => {
+      if (err) {
         console.log(err);
-      }else{
-        res.render('spotInfo',
-        {
-          title: 'Searching',
-          page_id: 'info-page',
-          path: req.url,
-          data: data
-        })
+      } else {
+        res.render('Templates/results-details',
+          {
+            title: 'Searching',
+            page_id: 'info-page',
+            path: req.url,
+            data: data
+          })
       }
     })
 });
 
- 
+
 
 
 

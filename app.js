@@ -27,24 +27,12 @@ db.once('open', function () {
   console.log('we are live');
 });
 
-// spot.create({name:"MyGoods"},function(err,newEntry){
-//   if(err){
-//     console.log(err);
-//   }
-// })
-
-// schema construction
-// const kittySchema = new mongoose.Schema({
-//   name: String
-// });
-
-// const Kitten = mongoose.model('Kitten', kittySchema);
-
-// const silence = new Kitten({ name: 'Silence' });
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var adminRouter = require('./routes/admin');
+// var adminRouter = require('./routes/admin');
+var adminRestaurants = require('./routes/admin-restaurants');
+var adminDishes = require('./routes/admin-dishes');
 
 var app = express();
 app.use(methodOverride('_method'))
@@ -60,9 +48,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Routes
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/admin', adminRouter);
+app.use('/admin', adminRestaurants);
+app.use('/dishes', adminDishes);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

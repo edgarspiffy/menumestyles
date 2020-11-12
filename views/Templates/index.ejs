@@ -1,4 +1,4 @@
-<% include ./partials/mainHeader %>
+<% include ../Sections/header %>
 
 
 <div class='container-fluid'>
@@ -6,17 +6,17 @@
     <button><a href="/admin">admin</a></button>
     <div style='min-height:90vh' class="row align-items-center">
       <div class='col p-0'>
-        <% include ./partials/searchBar %>
+        <% include ../Sections/searchBar %>
         <h3 class='title'>Food Criteria</h3>
         <div class='d-flex flex-wrap justify-content-center'>
           <% foodFilters.forEach(filter => { %>
-          <% include ./partials/filters %>
+          <% include ../Sections/filters %>
           <% }) %>
         </div>
         <h3 class='title'>Spot Criteria</h3>
         <div class='d-flex flex-wrap justify-content-center'>
           <% spotFilters.forEach(filter => { %>
-          <% include ./partials/filters %>
+          <% include ../Sections/filters %>
           <% }) %>
         </div>
       </div>
@@ -25,4 +25,4 @@
 </div>
 
 
-<% include ./partials/mainFooter %>
+<% include ../Sections/footer %>

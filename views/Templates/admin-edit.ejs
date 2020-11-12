@@ -1,13 +1,14 @@
-<% include ../partials/mainHeader %>
+<% include ../Sections/header %>
 
-<div class="container"><%= data %></div>
-
+<div class="container">
+  <button><a href="/admin">Admin</a></button>
+</div>
 
 <!-- ADD FORM -->
 <div class="container pt-3">
   <div id='admin-edit-form'>
     <form method="POST" action="/admin/<%= id %>?_method=put">
-      <% include ./forms/restaurantInfo %>
+      <% include ../Sections/form-basic-info %>
       <button class='btn btn-warning'>UPDATE INFO</button>
     </form>
   </div>
@@ -23,7 +24,7 @@
 <!-- ADD DISH -->
 <div class="container mt-5 pt-3 pb-3">
   <p>Add A Dish</p>
-  <form method='POST' action="/admin/newDish/<%= id %>">
+  <form method='POST' action="/dishes/<%= id %>">
     <div class="form-row">
 
       <div class="form-group col-2">
@@ -67,7 +68,7 @@
     <% data.dishes.forEach(element => { %>
     <div class="col-4">
 
-      <form method="POST" action="/admin/editDish/<%= element.id %>?_method=put">
+      <form method="POST" action="/dishes/<%= element.id %>?_method=put">
         <div class="card">
           <div class="card-body">
 
@@ -90,18 +91,13 @@
                 value="<%= element.dishInfo.price %>">
             </div>
 
-            <p><%= element.restaurantInfo %> </p>
-            <p><%= element.restaurantAddress %> </p>
-            <p><%= element.restaurantHours %> </p>
-            <p><%= element.restaurantAttributes %> </p>
-
             <button class='btn btn-warning'>Update</button>
 
           </div>
         </div>
       </form>
       <!-- DELETE -->
-      <form method="POST" action="/admin/deleteDish/<%= element.id %>?_method=delete">
+      <form method="POST" action="/dishes/<%= element.id %>?_method=delete">
         <button class='btn btn-danger'>DELETE</button>
       </form>
 
@@ -113,4 +109,4 @@
 
 
 
-<% include ../partials/mainFooter %>
+<% include ../Sections/footer %>
