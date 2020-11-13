@@ -1,15 +1,25 @@
+<% let d = new Date(); %>
+<% let h = d.getHours(); %>
+<% let m = d.getMinutes(); %>
+<% let now = `${h}.${m}` %> 
+<% let status %> 
+<% if(element.restaurantHours.mon < now ){ %> 
+<% status = "open" %> 
+<% }else{ %> 
+  <% status = "close" %>
+ <%   } %> 
+
+
 <div class="card">
-  <div class='card-tab'>Happy Hour</div>
+  <div class='card-tab'><%= status %> my time <%= m %>  </div>
   <div class="card-body">
-    <a href="/spot/<%= element._id %> "><h4 class="card-subtitle card-link"><%= element.restaurant %> <i class="fas fa-long-arrow-alt-right"></i></h4></a>
-    <h2 class="card-title"><%= element.name %></h2>
+    <a href="/spot/<%= element._id %> "><h4 class="card-subtitle card-link"><%= element.restaurantInfo.name %> <i class="fas fa-long-arrow-alt-right"></i></h4></a>
+    <h2 class="card-title"><%= element.dishInfo.name %></h2>
     <hr>
     <h4 class="card-subtitle">Ingredients</h4>
-    <p class="card-text"><%= element.ingredients %>
+    <p class="card-text"><%= element.dishInfo.ingredients %>
     </p>
     <h4 class="card-subtitle">Attributes</h4>
-    <p class="card-text dish-attributes">
-    
-    </p>
+    <p class="card-text dish-attributes"><%= element.dishInfo.attributes%></p>
   </div>
 </div>
