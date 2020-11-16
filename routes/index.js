@@ -1,16 +1,10 @@
 const express = require('express');
 const dish = require('../models/dish');
-const restaurant = require('../models/restaurant');
 const router = express.Router();
 const attributes = require('../app_modules/attributes');
 
 
-
-
-
-
-
-
+// GET HOME PAGE
 router.get('/', (req, res, next) => {
   res.render('Templates/index',
     {
@@ -34,6 +28,10 @@ router.get('/', (req, res, next) => {
 
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 018c1c9779c4dc1791a5273880cd0786bb1aa276
 router.get('/search', (req, res, next) => {
   let queryArray = Object.keys(req.query);
 
@@ -41,11 +39,10 @@ router.get('/search', (req, res, next) => {
   let search = {};
   let ingredient = req.query.ingredient;
   let newIngreident = ingredient.toLowerCase();
-  search.ingredients = newIngreident;
   let vegan = req.query.vegan;
   let spicy = req.query.spicy;
   let vegetarian = req.query.vegetarian;
-  console.log(req.query);
+  // console.log(req.query);
   if (vegan) {
     let key = "attributes.vegan"
     search[key] = true;
@@ -60,7 +57,7 @@ router.get('/search', (req, res, next) => {
   }
   // console.log(search);
   //swap the bottom with search
-  dish.find({}, function (err, found) {
+  dish.find({ "dishInfo.ingredients":"cheese"}, function (err, found) {
     if (err) {
       console.log(err);
     } else {
@@ -80,6 +77,8 @@ router.get('/search', (req, res, next) => {
     }
   })
 });
+
+
 
 
 router.get('/spot/:id', (req, res, next) => {
