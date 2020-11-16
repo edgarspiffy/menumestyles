@@ -23,6 +23,17 @@ router.get('/', (req, res, next) => {
 });
 
 
+
+
+
+
+
+
+
+
+
+
+
 router.get('/search', (req, res, next) => {
   let queryArray = Object.keys(req.query);
 
