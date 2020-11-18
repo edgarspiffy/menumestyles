@@ -5,28 +5,6 @@ const attributes = require('../app_modules/attributes');
 const buildRestaurantModel = require('../app_modules/buildRestaurantModel');
 const router = express.Router();
 
-function updateDish(req) {
-  // Make Ingridients into array
-  let ingredients = req.body.ingredients;
-  ingredients = ingredients.replace(/\s*,\s*/g, ",");
-  ingredients = ingredients.split(",");
-  // BUILD DOC
-  const doc = {
-    // UNIQUE DATA
-    dishInfo: {
-      name: req.body.dishName,
-      ingredients: ingredients,
-      price: req.body.price,
-    },
-    dishAttributes: {
-      vegan: true,
-      vegetarian: true,
-      spicy: true
-    },
-  }
-  return doc;
-}
-
 
 // GET ALL RESTAURANTS
 router.get('/', (req, res, next) => {

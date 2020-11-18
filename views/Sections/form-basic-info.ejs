@@ -1,14 +1,10 @@
 <!-- BASIC INFO -->
-
 <div class="form-row">
-
-
   <div class="form-group col-lg-4">
     <label for="name">name</label>
     <input class="form-control" id='name' name='name' type="text" required <% if (path !== "/") { %>
       value="<%= data.restaurantInfo.name %>" <% } %>>
   </div>
-
 
   <div class="form-group col-lg-4">
     <label for="website">website</label>
@@ -16,17 +12,12 @@
       value="<%= data.restaurantInfo.website %>" <% } %>>
   </div>
 
-
   <div class="form-group col-lg-4">
     <label for="phone">phone</label>
     <input class="form-control" id='phone' name='phone' type="tel" required <% if (path !== "/") { %>
       value="<%= data.restaurantInfo.phone %>" <% } %>>
   </div>
-
-
 </div>
-
-
 
 <!-- ADDRESS -->
 <div class="form-row">
@@ -48,32 +39,28 @@
 </div>
 
 <!-- ATTRIBUTES -->
+
 <div class="container">
   <div class="form-row">
     <% spotFilters.forEach(filter => { %>
     <div class="form-check form-group col-md-3">
-      <input value="true" name="<%= filter %>" type="checkbox" class="form-check-input" id="<%= filter %>">
+      <input value="true" name="<%= filter %>" type="checkbox" class="form-check-input" id="<%= filter %>"
+        <% if(path !== "/" && data["restaurantAttributes"][filter] === 'true'){ %> checked <% } %>>
       <label class="form-check-label" for="<%= filter %>"><%= filter %></label>
     </div>
     <% }) %>
   </div>
 </div>
 
-
 <!-- HOURS -->
 <% const week = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'] %>
-
-
 <% week.forEach(day => { %>
 <hr>
 <div class="form-row">
-
   <label class='col-2 col-form-label' for="<%= day %>">
     <%= day %>
   </label>
-
   <% const hours = ['open','close'] %>
-
   <% hours.forEach(hour => { %>
   <div class="col-2">
     <select class="form-control" name="<%= hour %><%= day %>" id="<%= hour %><%= day %>">
@@ -83,11 +70,7 @@
       <% include ./form-hours %>
     </select>
   </div>
-
   <% }) %>
-
-
-
   <div class="col-2">
     <div class="form-check mt-2">
       <input class="form-check-input" type="checkbox" value="Closed" id="<%= day %>">
@@ -96,15 +79,10 @@
       </label>
     </div>
   </div>
-
   <% if (day == 'Monday') { %>
   <div class="col-2">
     <p onclick="duplicateHours()" class='btn btn-secondary mb-0'>Duplicate</p>
   </div>
   <% } %>
-
-
-
 </div>
-
 <% }) %>

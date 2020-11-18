@@ -1,28 +1,6 @@
 const attributes = require('./attributes');
-
-module.exports = function (data, req) {
-  // Make Ingridients into array
-  let ingredients = req.body.ingredients;
-  ingredients = ingredients.toLowerCase();
-  ingredients = ingredients.replace(/\s*,\s*/g, ",");
-  ingredients = ingredients.split(",");
-
-  let dishName = req.body.dishName;
-  dishName = dishName.toLowerCase();
-  // BUILD DOC
+module.exports = function (req) {
   const doc = {
-    // UNIQUE DATA
-    dishInfo: {
-      name: dishName,
-      ingredients: ingredients,
-      price: req.body.price,
-    },
-    dishAttributes: {
-      // vegan: true,
-      // vegetarian: true,
-      // spicy: true
-    },
-    // PULLED DATA
     restaurantInfo: {
       name: data.restaurantInfo.name,
       phone: data.restaurantInfo.phone,
@@ -48,14 +26,9 @@ module.exports = function (data, req) {
       sat: data.restaurantHours.sat,
       sun: data.restaurantHours.sun
     },
-    restaurantID: [data._id],
-  }
-  // Dynamically Adds Filters
+  };
   attributes.spotFilters.forEach(attribute => {
-    doc["restaurantAttributes"][attribute] = data.restaurantAttributes[attribute];
-  });
-  attributes.foodFilters.forEach(attribute => {
-    doc["dishAttributes"][attribute] = req.body[attribute];
+    doc["restaurantAttributes"][attribute] = req.body[attribute];
   });
   return doc;
 };

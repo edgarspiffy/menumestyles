@@ -1,3 +1,4 @@
+const attributes = require('./attributes');
 module.exports = function (req) {
   const doc = {
     restaurantInfo: {
@@ -12,9 +13,9 @@ module.exports = function (req) {
       state: "CA",
     },
     restaurantAttributes: {
-      holeInWall: req.body["hole in the wall"],
-      alcohol: req.body["in happy hour"],
-      happyHour: req.body["serves beer & alcohol"]
+      // holeInWall: req.body["hole in the wall"],
+      // alcohol: req.body["in happy hour"],
+      // happyHour: req.body["serves beer & alcohol"]
     },
     restaurantHours: {
       mon: [req.body.openMonday, req.body.closeMonday],
@@ -26,5 +27,8 @@ module.exports = function (req) {
       sun: [req.body.openSunday, req.body.closeSunday]
     }
   };
+  attributes.spotFilters.forEach(attribute => {
+    doc["restaurantAttributes"][attribute] = req.body[attribute];
+  });
   return doc;
 };

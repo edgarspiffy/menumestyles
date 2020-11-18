@@ -7,10 +7,29 @@ var logger = require('morgan');
 var dish = require('./models/dish');
 var spot = require('./models/restaurant');
 var bodyParser = require('body-parser');
+var attributes = require('./app_modules/attributes');
 
 
+// function buildAttributesObject(data) {
+//   const document = {};
+//   attributes.spotFilters.forEach(attribute => {
+//     document["restaurantAttributes"][attribute] = data.restaurantAttributes[attribute];
+//   });
+//   return document;
+// }
 
-// mongo setup
+// function updateCollection() {
+//   spot.find({}, (err, documents) => {
+//     documents.forEach(doc => {
+//       spot.findByIdAndUpdate(doc._id, buildAttributesObject(doc), err => {
+//         if (err) console.log(err);
+//         else console.log('should have worked');
+//       });
+//     });
+//   });
+// }
+
+// updateCollection();
 
 const mongoose = require('mongoose');
 //mongoose.connect('mongodb://localhost/test', { useUnifiedTopology: true, useNewUrlParser: true  });

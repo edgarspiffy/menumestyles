@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const restaurant = require('../models/restaurant');
+const attributes = require('../app_modules/attributes');
 
 const dishSchema = new mongoose.Schema({
   // UNIQUE DATA
@@ -9,9 +10,6 @@ const dishSchema = new mongoose.Schema({
     price: Number,
   },
   dishAttributes: {
-    vegan: Boolean,
-    vegetarian: Boolean,
-    spicy: Boolean
   },
   // PULLED DATA
   restaurantInfo: {
@@ -43,6 +41,11 @@ const dishSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'restaurant'
   }]
+});
+
+// Dynamic Adding Restaurant Schema
+attributes.foodFilters.forEach(attribute => {
+  dishSchema.obj["dishAttributes"][attribute] = Boolean;
 });
 
 module.exports = mongoose.model("dish", dishSchema);

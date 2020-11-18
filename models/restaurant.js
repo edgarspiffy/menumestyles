@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
 const dish = require('../models/dish');
+const attributes = require('../app_modules/attributes');
 
 const restaurantSchema = new mongoose.Schema({
   restaurantInfo: {
     name: String,
-    phone: Number,
+    phone: String,
     website: String
   },
   restaurantAddress: {
@@ -23,14 +24,16 @@ const restaurantSchema = new mongoose.Schema({
     sun: [String]
   },
   restaurantAttributes: {
-    holeInWall: Boolean,
-    alcohol: Boolean,
-    happyHour: Boolean
   },
   dishes: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'dish'
   }]
+});
+
+// Dynamic Adding Restaurant Schema
+attributes.spotFilters.forEach(attribute => {
+  restaurantSchema.obj["restaurantAttributes"][attribute] = Boolean;
 });
 
 module.exports = mongoose.model("restaurant", restaurantSchema);
